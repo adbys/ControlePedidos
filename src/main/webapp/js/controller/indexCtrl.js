@@ -1,10 +1,41 @@
 angular.module("controlePedidos", []).controller("indexCtrl", function($scope, $http){
 
-	$scope.produtos = new Array(1);
+	$scope.produtos = [{
+		nome: '',
+	    quantidade: '',
+	    categoria: '',
+	    precoCusto: '',
+	    precoVenda: ''
 
-			$scope.clica = function () {
-				$scope.produtos.push(2);
-			}
+	}];
+
+	$scope.apagaProduto = function (produto) {
+		var index = $scope.produtos.indexOf(produto);
+
+		$scope.produtos.splice(index, 1);
+
+	}
+
+	$scope.salvar = function () {
+		console.log($scope.produtos);
+		$scope.pedido.produtos = $scope.produtos;
+		console.log($scope.pedido);
+
+	}
+
+	$scope.clica = function () {
+		$scope.produtos.push(2);
+	}
+
+	$scope.addNovo = function() {
+	    $scope.produtos.push({
+	      nome: '',
+	      quantidade: '',
+	      categoria: '',
+	      precoCusto: '',
+	      precoVenda: ''
+	    });
+	}
 	
 	$scope.lojas = [];
 
