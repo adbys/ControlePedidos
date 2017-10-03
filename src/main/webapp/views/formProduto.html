@@ -1,0 +1,29 @@
+<fieldset class="inner-fieldset">
+	<legend>
+		<img src="../utils/close-button.png">
+		<img ng-click="clica()" src="../utils/new-button.png">
+	</legend>
+	<div class="container">
+		<div class="form-group">
+			<label class="field" for="produto">Produto</label>
+			<input ng-model="produto.nome" class="textbox-300" type="text" name="produtos" id="produtos" placeholder="Digite o nome do produto">	
+		</div>
+		<div class="form-group">
+			<label class="field" for="quatidade">Quantidade</label>
+			<input ng-model="produto.quantidade" class="textbox-300" type="number" name="quantidade" id="quantidade" placeholder="Digite a quantidade do produto" min="0" max="999">	
+		</div>
+		<div class="form-group">
+			<label class="field" for="categoriasSelect">Categoria</label>
+			<select ng-model="produto.categoria" ng-options="categoria.nome as categoria.nome for categoria in categorias" class="selectbox-300" name="categoriasSelect">
+			</select>
+		</div>
+		<div class="form-group">
+			<label class="field" for="custo">Preço de custo</label>
+			<input ng-model="produto.precoCusto" class="textbox-300" type="number" name="quantidade" id="quantidade" placeholder="Digite o preço de custo do produto" min="0.00"  step="0.01">	
+		</div>
+		<div class="form-group">
+			<label class="field" for="venda">Preço de venda</label>
+			<input ng-model="produto.precoVenda" class="textbox-300" type="number" name="venda" id="venda" placeholder="Digite o preço de custo do produto" min="0.00"  step="0.01">	
+		</div>	
+	</div>
+</fieldset>	

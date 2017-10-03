@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html ng-app="controlePedidos">
+	<head>
+		<title>Controle</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/app.css">
+
+		<script type="text/javascript" src="lib/angular/angular.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controller/indexCtrl.js"></script>
+		<script src="lib/jquery/jquery-3.2.1.min.js"></script>
+		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/directives/cadastroProdutoDirective.js"></script>
+
+	</head>
+
+	<body ng-controller="indexCtrl">
+
+		<header>
+			<div class="container">
+				<div class="row">
+					<nav class="navbar navbar-default">
+						<div>
+						    <div class="navbar-header logo">
+						      <img src="utils/aluisiofashion-logo.png" width="90" height="50">
+						    </div>
+						    <ul class="nav navbar-nav">
+						    	<li class="active"><a href="index.html" target="_self">Cadastrar Nota</a></li>
+						    	<li><a href="views/buscar.html" target="_self">Pesquisar Nota</a></li>
+						    	<li>
+						    		<div class="dropdown">
+										<a class="dropdown-toggle nav-buttons" data-toggle="dropdown">Cadastrar
+										<span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="views/marca.html">Cadastrar Marca</a></li>
+											<li><a href="views/loja.html">Cadastrar Loja</a></li>
+											<li><a href="views/categoria.html">Cadastrar Categoria</a></li>
+										</ul>
+									</div>
+						    	</li>
+						    	<li><a href="views/buscar.html" target="_self">Usuários</a></li>
+						    </ul>
+						</div>
+					</nav>
+				</div>
+			
+			</div>
+		</header>	
+		
+
+		<section>
+			<div class="container text-center">
+
+				<h1>Cadastro de Pedido</h1>
+
+				<form name="cadastroPedidoForm">
+					<fieldset class="external-fieldset">
+						<div class="container">
+							
+							<h2>Informações gerais</h2>
+
+							<div class="form-group">	
+								
+								<label class="field" for="nota">Número da nota fiscal</label>
+								<input class="textbox-300" type="text" name="nota" id="nota" placeholder="Digite o número da nota fiscal" required autofocus>
+							</div>
+							<div class="form-group">
+								<label class="field" for="data-pedido">Data de pedido</label>
+								<input ng-model="pedido.dataPedido" class="textbox-300" type="date" name="data-pedido" id="data-pedido" min="2017-01-01" required>
+							</div>
+							<div class="form-group">
+								<label class="field" for="date">Data de recebimento</label>
+								<input ng-model="pedido.dataRecebimento" class="textbox-300" type="date" name="date" id="date" min="2017-01-01" required>
+							</div>
+							<div class="form-group">
+								<label class="field" for="lojaSelect">Loja</label>
+								<select ng-model="pedido.loja" ng-options="loja.nome as loja.nome for loja in lojas" class="selectbox-300" name="lojaSelect">
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="field" for="marcaSelect">Marca</label>
+								<select ng-model="pedido.marca" ng-options="marca.nome as marca.nome for marca in marcas" class="selectbox-300" name="marcaSelect" id="marcaSelect">
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="field" for="observacoes">Observações</label>
+								<textarea ng-model="pedido.observacoes" class="textarea-300" name="observacoes"></textarea>
+							</div>
+						</div>
+					
+						<h2>Produtos</h2>
+
+						<div ng-repeat="produto in produtos">
+
+							<div cadastro-produto></div>		
+					
+						</div>
+
+						<button type="submit" class="btn btn-primary">Salvar</button>
+						<button class="btn">Limpar</button>
+						
+					</fieldset>
+				</form>
+			</div>
+		</section>
+
+		<footer>
+			<div ng-include="'views/footer.html'"></div>
+		</footer>
+</body>
+</html>

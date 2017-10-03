@@ -1,0 +1,91 @@
+header {
+	
+}
+
+header .container {
+	width: 100%;
+}
+
+.logo {
+	margin: 10px;
+}
+
+nav {
+	width: 100%;
+	height: 70px;
+}
+
+.nav-buttons{
+	height: 100%;
+	display: inline-block;
+	color: gray;
+}
+
+.navbar-nav li a {
+	padding: 20px;
+    margin: 0px;
+    height: 70px;
+}
+
+legend {
+	border-radius: 5px;
+	border: 1px solid gray;
+	text-align: right;
+	padding: 2px;
+	font-size: 14px;
+}
+
+fieldset .inner-fieldset{
+	border: 1px solid gray;
+}
+
+label.field {
+	text-align: right;
+	width: 400px;
+	float: left;
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+fieldset div {
+	padding: 10px;
+	clear: both;
+}
+
+input.textbox-300 {
+	border-radius: 4px;
+	width: 300px;
+	float: left;
+}
+
+select.selectbox-300 {
+	width: 300px;
+	float: left;
+}
+
+textarea.textarea-300 {
+	border-radius: 4px;
+	width: 300px;
+	float: left;
+	height: 100px;
+}
+
+
+fieldset { 
+	border-radius: 10px;
+	border:1px solid black;
+	padding: 20px;
+	text-align: center;
+	
+}
+
+fieldset.inner-fieldset {
+	
+	
+}
+
+.selected {
+	background-color: #e7e7e7;
+}
+
+
