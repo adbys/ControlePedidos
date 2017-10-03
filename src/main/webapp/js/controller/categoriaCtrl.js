@@ -1,8 +1,8 @@
 angular.module("controlePedidos", []).controller("categoriaCtrl", function($scope, $http){
 
-	$scope.salvarCategoria = function () {
+	$scope.salvarLoja = function () {
 		console.log($scope.categoria);
-		$http.post("/categoria", $scope.categoria).then(function successCallback(response) {
+		$http.post("/loja", $scope.categoria).then(function successCallback(response) {
 		    console.log(response);
 		  }, function errorCallback(response) {
 		    // called asynchronously if an error occurs
