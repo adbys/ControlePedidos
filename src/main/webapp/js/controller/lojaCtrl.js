@@ -1,11 +1,5 @@
 angular.module("controlePedidos", []).controller("lojaCtrl", function($scope, $http){
 
-
-	init();
-	function init() {
-		console.log("======");
-	}
-
 	$scope.salvarLoja = function () {
 		console.log($scope.loja);
 		$http.post("/loja", $scope.loja).then(function successCallback(response) {
