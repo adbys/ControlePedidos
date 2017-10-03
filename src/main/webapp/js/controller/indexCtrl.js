@@ -23,9 +23,6 @@ angular.module("controlePedidos", []).controller("indexCtrl", function($scope, $
 
 	}
 
-	$scope.clica = function () {
-		$scope.produtos.push(2);
-	}
 
 	$scope.addNovo = function() {
 	    $scope.produtos.push({
@@ -35,6 +32,19 @@ angular.module("controlePedidos", []).controller("indexCtrl", function($scope, $
 	      precoCusto: '',
 	      precoVenda: ''
 	    });
+	}
+
+	$scope.limparFormulario = function () {
+
+		$scope.produtos = [{
+			nome: '',
+		    quantidade: '',
+		    categoria: '',
+		    precoCusto: '',
+		    precoVenda: ''
+
+		}];
+
 	}
 	
 	$scope.lojas = [];

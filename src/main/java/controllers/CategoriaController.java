@@ -45,10 +45,12 @@ public class CategoriaController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public Categoria saveCategoria (@RequestBody Categoria categoria) {
+		System.out.println(categoria.getNome());
 		
 		categorias.add(categoria);
 		
 		return categoria;
 	}
-
+	
+	
 }
