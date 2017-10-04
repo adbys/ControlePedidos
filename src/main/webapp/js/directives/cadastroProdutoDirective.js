@@ -1,4 +1,4 @@
-angular.module("controlePedidos").directive("cadastroProduto", function () {
+app.directive("cadastroProduto", function () {
 	return{
 		templateUrl: "../views/formProduto.html"
 	};

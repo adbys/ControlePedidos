@@ -1,3 +1,3 @@
-angular.module("controlePedidos", ["ngRoute"]).config(function ($routeProvider){
+app.config(function ($routeProvider){
 
 });

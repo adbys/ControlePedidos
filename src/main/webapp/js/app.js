@@ -1,1 +1,1 @@
-angular.module("controlePedidos", ["cadastroProduto"]);
+const app = angular.module("controlePedidos",["ngRoute"]);

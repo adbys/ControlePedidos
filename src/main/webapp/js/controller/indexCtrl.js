@@ -1,4 +1,4 @@
-angular.module("controlePedidos", []).controller("indexCtrl", function($scope, $http){
+app.controller("indexCtrl", function($scope, $http){
 
 	$scope.produtos = [{
 		nome: '',

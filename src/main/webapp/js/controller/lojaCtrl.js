@@ -1,4 +1,4 @@
-angular.module("controlePedidos", []).controller("lojaCtrl", function($scope, $http){
+app.controller("lojaCtrl", function($scope, $http){
 
 	$scope.salvarLoja = function () {
 		console.log($scope.loja);

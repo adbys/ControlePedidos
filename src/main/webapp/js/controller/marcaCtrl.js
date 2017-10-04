@@ -1,4 +1,4 @@
-angular.module("controlePedidos", []).controller("marcaCtrl", function($scope, $http){
+app.controller("marcaCtrl", function($scope, $http){
 
 	$scope.salvarMarca = function () {
 		console.log($scope.marca);
