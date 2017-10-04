@@ -9,11 +9,15 @@
 
 		<script src="lib/angular/angular.js"></script>
 		<script src="lib/angular/angular-route.js"></script>
-		<script src="js/app.js"></script>
-		<script src="js/directives/cadastroProdutoDirective.js"></script>
-		<script src="js/controller/indexCtrl.js"></script>
 		<script src="lib/jquery/jquery-3.2.1.min.js"></script>
 		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controller/categoriaCtrl.js"></script>
+		<script src="js/controller/indexCtrl.js"></script>
+		<script src="js/controller/lojaCtrl.js"></script>
+		<script src="js/controller/marcaCtrl.js"></script>
+		<script src="js/config/routeConfig.js"></script>
+		<script src="js/directives/cadastroProdutoDirective.js"></script>
 
 	</head>
 
@@ -25,7 +29,7 @@
 		
 
 		<section>
-			<div ng-include="'views/cadastraPedido.html'"></div>
+			<div ng-view=""></div>
 		</section>
 
 		<footer>

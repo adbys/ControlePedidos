@@ -1,103 +1,47 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Controle</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../css/app.css">
-	</head>
-	<body>
-		
-		<header>
+<div class="container text-center">
+
+	<h1>Pesquisar Pedidos</h1>
+
+	<form>
+		<fieldset>
 			<div class="container">
-				<div class="row">
-					<nav class="navbar navbar-default">
-						<div>
-						    <div class="navbar-header logo">
-						      <img src="../utils/logo-usaflex.png" width="90" height="50">
-						    </div>
-						    <ul class="nav navbar-nav">
-						    	<li><a href="index.html" target="_self">Cadastrar Nota</a></li>
-						    	<li class="active"><a href="buscar.html" target="_self">Pesquisar Nota</a></li>
-						    	<li>
-						    		<div class="dropdown">
-										<a class="dropdown-toggle nav-buttons" data-toggle="dropdown">Cadastrar
-										<span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="marca.html">Cadastrar Marca</a></li>
-											<li><a href="loja.html">Cadastrar Loja</a></li>
-											<li><a href="categoria.html">Cadastrar Categoria</a></li>
-										</ul>
-									</div>
-						    	</li>
-						    	<li><a href="buscar.html" target="_self">Usuários</a></li>
-						    </ul>
-						</div>
-					</nav>
+				<div class="form-group">
+					<label class="field" for="marca">Marca</label>
+					<select class="selectbox-300" name="marca" id="marca">
+						<option value="marca1">Marca 1</option>
+						<option value="marca2">Marca 2</option>
+						<option value="marca3">Marca 3</option>
+					</select>
 				</div>
-			
-			</div>
-		</header>
-
-
-		<section>
-			<div class="container text-center">
-
-				<h1>Pesquisar Pedidos</h1>
-
-				<form>
-					<fieldset>
-						<div class="container">
-							<div class="form-group">
-								<label class="field" for="marca">Marca</label>
-								<select class="selectbox-300" name="marca" id="marca">
-									<option value="marca1">Marca 1</option>
-									<option value="marca2">Marca 2</option>
-									<option value="marca3">Marca 3</option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label class="field" for="date">Data de recebimento</label>
-								<input class="textbox-300" type="date" name="date" id="date" min="2017-01-01" required>
-							</div>
-							
-						</div>
-
-						<button type="submit" class="btn btn-primary">Salvar</button>
-						<button class="btn">Limpar</button>
-
-					</fieldset>
-				</form>
-			</div>
-		
-		</section>
-
-		<section>
-			<div class="container text-center">
+				<div class="form-group">
+					<label class="field" for="date">Data de recebimento</label>
+					<input class="textbox-300" type="date" name="date" id="date" min="2017-01-01" required>
+				</div>
 				
-				<h2>Pedidos</h2>
-				<table class="table table-striped">
-					<tr>
-						<td>Id</td>
-						<td>Data do Pedido</td>
-						<td>Data do Recebimento</td>
-						<td>Loja</td>
-						<td>Marca</td>
-						<td>Observações</td>
-					</tr>
-					
-				</table>
 			</div>
-			
-		</section>
 
-			
+			<button type="submit" class="btn btn-primary">Salvar</button>
+			<button class="btn">Limpar</button>
+
+		</fieldset>
+	</form>
+</div>
+
+</section>
+
+<section>
+<div class="container text-center">
+	
+	<h2>Pedidos</h2>
+	<table class="table table-striped">
+		<tr>
+			<td>Id</td>
+			<td>Data do Pedido</td>
+			<td>Data do Recebimento</td>
+			<td>Loja</td>
+			<td>Marca</td>
+			<td>Observações</td>
+		</tr>
 		
-
-		<script type="text/javascript" src="../lib/angular/angular.js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	</body>
-</html>
+	</table>
+</div>
