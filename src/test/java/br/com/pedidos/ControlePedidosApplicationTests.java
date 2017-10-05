@@ -1,4 +1,4 @@
-package controllers;
+package br.com.pedidos;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ControlePedidos1ApplicationTests {
+public class ControlePedidosApplicationTests {
 
 	@Test
 	public void contextLoads() {

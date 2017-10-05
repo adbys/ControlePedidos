@@ -1,4 +1,4 @@
-package model;
+package br.com.pedidos.model;
 
 public class Loja {
 	

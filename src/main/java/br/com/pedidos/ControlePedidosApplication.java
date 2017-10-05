@@ -1,12 +1,12 @@
-package controllers;
+package br.com.pedidos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ControlePedidos1Application {
+public class ControlePedidosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ControlePedidos1Application.class, args);
+		SpringApplication.run(ControlePedidosApplication.class, args);
 	}
 }

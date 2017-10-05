@@ -1,4 +1,4 @@
-package controllers;
+package br.com.pedidos.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import model.Marca;
+import br.com.pedidos.model.Marca;
+
+
+
+
 
 @RestController
 @RequestMapping(value="/marca")
 public class MarcaController {
 	
-private List<Marca> marcas = new ArrayList<Marca>();
+private List<Marca> marcas = new ArrayList<br.com.pedidos.model.Marca>();
 
 	public MarcaController() {
 		Marca marca1 = new Marca();
