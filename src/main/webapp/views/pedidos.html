@@ -13,8 +13,8 @@
 		</tr>
 		<tr ng-repeat="pedido in pedidos">
 			<td>{{pedido.id}}</td>
-			<td>{{pedido.dataPedido}}</td>
-			<td>{{pedido.dataRecebimento}}</td>
+			<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
+			<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
 			<td>{{pedido.loja.nome}}</td>
 			<td>{{pedido.marca.nome}}</td>
 			<td>{{pedido.observacoes}}</td>
