@@ -3,22 +3,28 @@
 	<h1>Pedidos</h1>
 	<p ng-show="pedidos.length == 0">Não há pedidos cadastrados.</p>			
 	<table ng-show="pedidos.length != 0" class="table table-hover">
-		<tr>
-			<td>Id</td>
-			<td>Data do Pedido</td>
-			<td>Data do Recebimento</td>
-			<td>Loja</td>
-			<td>Marca</td>
-			<td>Observações</td>
-		</tr>
-		<tr ng-repeat="pedido in pedidos">
-			<td>{{pedido.id}}</td>
-			<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
-			<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
-			<td>{{pedido.loja}}</td>
-			<td>{{pedido.marca}}</td>
-			<td>{{pedido.observacoes}}</td>
-		</tr>
-		
+		<thead>
+			<tr>
+				<th class="text-center">Id</th>
+				<th class="text-center">Data do Pedido</th>
+				<th class="text-center">Data do Recebimento</th>
+				<th class="text-center">Loja</th>
+				<th class="text-center">Marca</th>
+				<th class="text-center">Observações</th>
+			</tr>
+			
+		</thead>
+		<tbody>
+			
+			<tr ng-repeat="pedido in pedidos">
+				<td>{{pedido.id}}</td>
+				<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
+				<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
+				<td>{{pedido.loja}}</td>
+				<td>{{pedido.marca}}</td>
+				<td>{{pedido.observacoes}}</td>
+			</tr>
+			
+		</tbody>
 	</table>
 </div>
