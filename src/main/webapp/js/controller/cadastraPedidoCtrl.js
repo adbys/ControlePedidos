@@ -1,4 +1,4 @@
-app.controller("indexCtrl", function($scope, $http){
+app.controller("cadastraPedidoCtrl", function($scope, $http){
 
 	$scope.produtos = [{
 		nome: '',
@@ -10,10 +10,11 @@ app.controller("indexCtrl", function($scope, $http){
 	}];
 
 	$scope.salvarPedido = function (pedido) {
-		console.log(Date.parse(pedido.dataPedid))
+		console.log(Date.parse(pedido.dataPedido))
+		pedido.dataPedido = Date.parse(pedido.dataPedido)
 		console.log(pedido)
 
-		$http.post("/pedido").then(function successCallback(response) {
+		$http.post("/pedido", pedido).then(function successCallback(response) {
 		    console.log(response);
 		  }, function errorCallback(response) {
 		    // called asynchronously if an error occurs
