@@ -9,6 +9,18 @@ app.controller("indexCtrl", function($scope, $http){
 
 	}];
 
+	$scope.salvarPedido = function (pedido) {
+		console.log(Date.parse(pedido.dataPedid))
+		console.log(pedido)
+
+		$http.post("/pedido").then(function successCallback(response) {
+		    console.log(response);
+		  }, function errorCallback(response) {
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
+	}
+
 	$scope.apagaProduto = function (produto) {
 		var index = $scope.produtos.indexOf(produto);
 

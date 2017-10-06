@@ -1,10 +1,10 @@
 app.config(function ($routeProvider){
 	$routeProvider
-    .when("/index", {
+    .when("/", {
         templateUrl : "views/cadastraPedido.html",
         controller: "indexCtrl"
     })
-    .when("/buscar", {
+    .when("/busca", {
         templateUrl : "views/buscar.html",
         controller: "indexCtrl"
     })

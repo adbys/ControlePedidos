@@ -1,24 +1,24 @@
 <div class="container text-center">
 	<h1>Cadastro de Pedido</h1>
 
-	<form name="cadastroPedidoForm">
+	<form>
 		<fieldset class="external-fieldset">
 			<div class="container">
 				
-				<h2>Informações gerais</h2>
+				<h2>Informações</h2>
 
 				<div class="form-group">	
 					
 					<label class="field" for="nota">Número da nota fiscal</label>
-					<input class="textbox-300" type="text" name="nota" id="nota" placeholder="Digite o número da nota fiscal" required autofocus>
+					<input class="textbox-300" type="text" name="nota" id="nota" placeholder="Digite o número da nota fiscal" autofocus>
 				</div>
 				<div class="form-group">
 					<label class="field" for="data-pedido">Data de pedido</label>
-					<input ng-model="pedido.dataPedido" class="textbox-300" type="date" name="data-pedido" id="data-pedido" min="2017-01-01" required>
+					<input ng-model="pedido.dataPedido" class="textbox-300" type="date" name="data-pedido" id="data-pedido" min="2017-01-01">
 				</div>
 				<div class="form-group">
 					<label class="field" for="date">Data de recebimento</label>
-					<input ng-model="pedido.dataRecebimento" class="textbox-300" type="date" name="date" id="date" min="2017-01-01" required>
+					<input ng-model="pedido.dataRecebimento" class="textbox-300" type="date" name="date" id="date" min="2017-01-01">
 				</div>
 				<div class="form-group">
 					<label class="field" for="lojaSelect">Loja</label>
@@ -38,13 +38,13 @@
 		
 			<h2>Produtos</h2>
 
-			<div ng-repeat="produto in produtos">
+			<div ng-model="pedido.produtos" ng-repeat="produto in produtos">
 
 				<div cadastro-produto></div>	
 		
 			</div>
 
-			<button type="submit" class="btn btn-primary">Salvar</button>
+			<button ng-click="salvarPedido(pedido)" class="btn btn-primary">Salvar</button>
 			<button class="btn">Limpar</button>
 			
 		</fieldset>
