@@ -1,8 +1,8 @@
 <div class="container text-center">
 
 	<h1>Pedidos</h1>
-	<p ng-hide="pedidos.length == 0">Não há pedidos cadastrados.</p>			
-	<table ng-hide="pedidos.length != 0" class="table table-hover">
+	<p ng-show="pedidos.length == 0">Não há pedidos cadastrados.</p>			
+	<table ng-show="pedidos.length != 0" class="table table-hover">
 		<tr>
 			<td>Id</td>
 			<td>Data do Pedido</td>

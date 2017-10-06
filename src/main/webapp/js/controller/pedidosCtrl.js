@@ -14,6 +14,7 @@ app.controller("pedidosCtrl", function($scope, $http){
 		    for (index in response.data) {
 		    	$scope.pedidos.push(response.data[index]);
 		    }
+		    console.log($scope.pedidos.length)
 	  	}, function errorCallback(response) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.

@@ -6,7 +6,5 @@ import javax.persistence.Id;
 @Embeddable
 public class Produto {
 
-	@Id
-	private Long id;
 	
 }
