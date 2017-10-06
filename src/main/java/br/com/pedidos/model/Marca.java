@@ -20,8 +20,8 @@ public class Marca {
 	private Long id;
 	private String nome;
 	private String codigo;
-	@OneToMany(mappedBy = "marca", targetEntity = Pedido.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Pedido> pedidos;
+//	@OneToMany(mappedBy = "marca", targetEntity = Pedido.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<Pedido> pedidos;
 	
 	public Marca() {
 		
@@ -51,12 +51,12 @@ public class Marca {
 		this.codigo = codigo;
 	}
 	
-	public List<Pedido> getPedidos() {
-		return this.pedidos;
-	}
-
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
+//	public List<Pedido> getPedidos() {
+//		return this.pedidos;
+//	}
+//
+//	public void setPedidos(List<Pedido> pedidos) {
+//		this.pedidos = pedidos;
+//	}
 
 }

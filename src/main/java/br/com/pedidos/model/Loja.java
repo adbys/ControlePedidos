@@ -19,8 +19,8 @@ public class Loja {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nome;
-	@OneToMany(mappedBy = "loja", targetEntity = Pedido.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Pedido> pedidos;
+//	@OneToMany(mappedBy = "loja", targetEntity = Pedido.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private List<Pedido> pedidos;
 	
 	public Loja () {
 		
@@ -42,13 +42,13 @@ public class Loja {
 		this.nome = nome;
 	}
 	
-	public List<Pedido> getPedidos() {
-		return this.pedidos;
-	}
-
-	public void setPedidos(List<Pedido> pedidos) {
-		this.pedidos = pedidos;
-	}
+//	public List<Pedido> getPedidos() {
+//		return this.pedidos;
+//	}
+//
+//	public void setPedidos(List<Pedido> pedidos) {
+//		this.pedidos = pedidos;
+//	}
 
 
 }

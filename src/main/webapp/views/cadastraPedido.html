@@ -22,12 +22,12 @@
 				</div>
 				<div class="form-group">
 					<label class="field" for="lojaSelect">Loja</label>
-					<select ng-model="pedido.loja" ng-options="loja as loja.nome for loja in lojas" class="selectbox-300" name="lojaSelect">
+					<select ng-model="pedido.loja" ng-options="loja.nome as loja.nome for loja in lojas" class="selectbox-300" name="lojaSelect">
 					</select>
 				</div>
 				<div class="form-group">
 					<label class="field" for="marcaSelect">Marca</label>
-					<select ng-model="pedido.marca" ng-options="marca as marca.nome for marca in marcas" class="selectbox-300" name="marcaSelect" id="marcaSelect">
+					<select ng-model="pedido.marca" ng-options="marca.nome as marca.nome for marca in marcas" class="selectbox-300" name="marcaSelect" id="marcaSelect">
 					</select>
 				</div>
 				<div class="form-group">

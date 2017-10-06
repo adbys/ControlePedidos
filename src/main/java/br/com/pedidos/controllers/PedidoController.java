@@ -21,6 +21,8 @@ public class PedidoController {
 	@RequestMapping(method = RequestMethod.POST)
 	public Pedido salvePedido (@RequestBody Pedido pedido) {
 		
+		System.out.println(pedido.getMarca());
+		
 		pedidoService.salvarPedido(pedido);
 		
 		return pedido;

@@ -16,15 +16,33 @@ public class Pedido {
 	private String dataPedido;
 	private String dataRecebimento;
 	private String observacoes;
-	@ManyToOne
-	@JoinColumn(name = "loja_id")
-	private Loja loja;
-	@ManyToOne
-	@JoinColumn(name = "marca_id")
-	private Marca marca;
+	private String loja;
+	private String marca;
+//	@ManyToOne
+//	@JoinColumn(name = "loja_id")
+//	private Loja loja;
+//	@ManyToOne
+//	@JoinColumn(name = "marca_id")
+//	private Marca marca;
 //	@Embedded
 //	private List<Produto> produtos;
 	
+	public String getLoja() {
+		return this.loja;
+	}
+	
+	public String getMarca() {
+		return this.marca;
+	}
+	
+	public void setLoja(String loja) {
+		this.loja = loja;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -49,20 +67,20 @@ public class Pedido {
 		this.dataRecebimento = dataRecebimento;
 	}
 	
-	public Loja getLoja() {
-		return loja;
-	}
-	
-	public void setLoja(Loja loja) {
-		this.loja = loja;
-	}
-	
-	public Marca getMarca() {
-		return marca;
-	}
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
+//	public Loja getLoja() {
+//		return loja;
+//	}
+//	
+//	public void setLoja(Loja loja) {
+//		this.loja = loja;
+//	}
+//	
+//	public Marca getMarca() {
+//		return marca;
+//	}
+//	public void setMarca(Marca marca) {
+//		this.marca = marca;
+//	}
 
 	public String getObservacoes() {
 		return observacoes;
