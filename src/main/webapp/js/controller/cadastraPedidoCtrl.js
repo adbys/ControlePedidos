@@ -11,7 +11,7 @@ app.controller("cadastraPedidoCtrl", function($scope, $http){
 
 	$scope.salvarPedido = function (pedido) {
 		console.log(Date.parse(pedido.dataPedido))
-		//pedido.dataPedido = Date.parse(pedido.dataPedido)
+		pedido.produtos = $scope.produtos;
 		console.log(pedido)
 
 		$http.post("/pedidos", pedido).then(function successCallback(response) {

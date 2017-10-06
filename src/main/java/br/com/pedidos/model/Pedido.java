@@ -1,11 +1,14 @@
 package br.com.pedidos.model;
 
+import java.util.List;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Pedido {
@@ -24,8 +27,12 @@ public class Pedido {
 //	@ManyToOne
 //	@JoinColumn(name = "marca_id")
 //	private Marca marca;
-//	@Embedded
-//	private List<Produto> produtos;
+	@ElementCollection
+	@CollectionTable(
+		name="produtos",
+		joinColumns=@JoinColumn(name="pedido_id")
+	)
+	private List<Produto> produtos;
 	
 	public String getLoja() {
 		return this.loja;
@@ -90,12 +97,12 @@ public class Pedido {
 		this.observacoes = observacoes;
 	}
 	
-//	public List<Produto> getProdutos() {
-//		return produtos;
-//	}
-//	public void setProdutos(List<Produto> produtos) {
-//		this.produtos = produtos;
-//	}
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
 	
 	
 	
