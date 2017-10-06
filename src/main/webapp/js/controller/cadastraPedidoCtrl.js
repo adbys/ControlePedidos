@@ -1,4 +1,4 @@
-app.controller("cadastraPedidoCtrl", function($scope, $http){
+app.controller("cadastraPedidoCtrl", function($scope, $http, toastr){
 
 	$scope.produtos = [{
 		nome: '',
@@ -16,6 +16,7 @@ app.controller("cadastraPedidoCtrl", function($scope, $http){
 
 		$http.post("/pedidos", pedido).then(function successCallback(response) {
 		    console.log(response);
+		    toastr.success("Pedido adicionado com sucesso!");
 		  }, function errorCallback(response) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.
