@@ -1,10 +1,10 @@
 package br.com.pedidos.model;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Pedido {
@@ -12,13 +12,15 @@ public class Pedido {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private Date dataPedido;
+	private String dataPedido;
 	private String dataRecebimento;
 	private String observacoes;
-//	@Embedded
-//	private Loja loja;
-//	@Embedded
-//	private Marca marca;
+	@ManyToOne
+	@JoinColumn(name = "loja_id")
+	private Loja loja;
+	@ManyToOne
+	@JoinColumn(name = "marca_id")
+	private Marca marca;
 //	@Embedded
 //	private List<Produto> produtos;
 	
@@ -30,11 +32,11 @@ public class Pedido {
 		this.id = id;
 	}
 	
-	public Date getDataPedido() {
+	public String getDataPedido() {
 		return dataPedido;
 	}
 	
-	public void setDataPedido(Date dataPedido) {
+	public void setDataPedido(String dataPedido) {
 		this.dataPedido = dataPedido;
 	}
 	
@@ -46,20 +48,20 @@ public class Pedido {
 		this.dataRecebimento = dataRecebimento;
 	}
 	
-//	public Loja getLoja() {
-//		return loja;
-//	}
-//	
-//	public void setLoja(Loja loja) {
-//		this.loja = loja;
-//	}
+	public Loja getLoja() {
+		return loja;
+	}
 	
-//	public Marca getMarca() {
-//		return marca;
-//	}
-//	public void setMarca(Marca marca) {
-//		this.marca = marca;
-//	}
+	public void setLoja(Loja loja) {
+		this.loja = loja;
+	}
+	
+	public Marca getMarca() {
+		return marca;
+	}
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
 
 	public String getObservacoes() {
 		return observacoes;

@@ -1,9 +1,14 @@
 package br.com.pedidos.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 @Embeddable
@@ -14,6 +19,8 @@ public class Marca {
 	private Long id;
 	private String nome;
 	private String codigo;
+	@OneToMany(mappedBy = "marca", targetEntity = Pedido.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Pedido> pedidos;
 	
 	public Marca() {
 		
@@ -41,6 +48,14 @@ public class Marca {
 	
 	public void setCodigo (String codigo) {
 		this.codigo = codigo;
+	}
+	
+	public List<Pedido> getPedidos() {
+		return this.pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 }

@@ -12,7 +12,7 @@ import br.com.pedidos.model.Pedido;
 import br.com.pedidos.services.PedidoService;
 
 @RestController
-@RequestMapping("/pedido")
+@RequestMapping("/pedidos")
 public class PedidoController {
 	
 	@Autowired
@@ -29,6 +29,7 @@ public class PedidoController {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Pedido> getPedidos () {
 		return this.pedidoService.buscarTodos();
+		//return pedidoService.buscarTodos();
 	}
 
 }
