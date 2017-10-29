@@ -12,6 +12,7 @@
 				<th class="text-center">Data do Recebimento</th>
 				<th class="text-center">Loja</th>
 				<th class="text-center">Marca</th>
+				<th class="text-center">Valor Total</th>
 				<th class="text-center">Observações</th>
 			</tr>
 			
@@ -24,6 +25,7 @@
 				<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
 				<td>{{pedido.loja}}</td>
 				<td>{{pedido.marca}}</td>
+				<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100)}}</td>
 				<td>{{pedido.observacoes}}</td>
 			</tr>
 			

@@ -20,5 +20,9 @@ app.config(function ($routeProvider){
         templateUrl : "views/categoria.html",
         controller: "categoriaCtrl"
     })
+    .when("/financas", {
+        templateUrl : "views/financas.html",
+        controller: "financasCtrl"
+    })
 
 });

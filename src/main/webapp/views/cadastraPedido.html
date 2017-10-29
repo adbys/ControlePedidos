@@ -16,6 +16,16 @@
 					<input ng-model="pedido.dataRecebimento" class="textbox-300" type="date" name="date" id="date" min="2017-01-01">
 				</div>
 				<div class="form-group">
+					<label class="field" for="desconto">Desconto</label>
+					<input ng-model="pedido.desconto" class="textbox-300" name="desconto" placeholder="Digite o desconto total">
+					</input>
+				</div>
+				<div class="form-group">
+					<label class="field" for="formaDePagamento">Forma de Pagamento</label>
+					<select ng-model="pedido.formaDePagamento" ng-options="loja.nome as loja.nome for loja in lojas" class="selectbox-300" name="formaDePagamento">
+					</select>
+				</div>
+				<div class="form-group">
 					<label class="field" for="lojaSelect">Loja</label>
 					<select ng-model="pedido.loja" ng-options="loja.nome as loja.nome for loja in lojas" class="selectbox-300" name="lojaSelect">
 					</select>
@@ -27,7 +37,7 @@
 				</div>
 				<div class="form-group">
 					<label class="field" for="observacoes">Observações</label>
-					<textarea ng-model="pedido.observacoes" class="textarea-300" name="observacoes"></textarea>
+					<textarea ng-model="pedido.observacoes" class="textarea-300" name="observacoes" placeholder="Observações..."></textarea>
 				</div>
 			</div>
 		

@@ -10,8 +10,17 @@ app.controller("cadastraPedidoCtrl", function($scope, $http, toastr){
 	}];
 
 	$scope.salvarPedido = function (pedido) {
+		var valorTotal = 0;
+
 		console.log(Date.parse(pedido.dataPedido))
-		pedido.produtos = $scope.produtos;
+		pedido.produtos = $scope.produtos
+
+		for (index in pedido.produtos) {
+		    valorTotal += pedido.produtos[index].quantidade * pedido.produtos[index].precoCusto 
+		}
+
+		pedido.valorTotal = valorTotal
+		
 		console.log(pedido)
 
 		$http.post("/pedidos", pedido).then(function successCallback(response) {

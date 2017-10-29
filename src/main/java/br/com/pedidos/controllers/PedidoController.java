@@ -22,6 +22,9 @@ public class PedidoController {
 	public Pedido salvePedido (@RequestBody Pedido pedido) {
 		
 		System.out.println(pedido.getMarca());
+		System.out.println(pedido.getProdutos().get(0));
+		System.out.println(pedido.getValorTotal());
+		System.out.println(pedido.getDesconto());
 		
 		pedidoService.salvarPedido(pedido);
 		
@@ -31,7 +34,6 @@ public class PedidoController {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Pedido> getPedidos () {
 		return this.pedidoService.buscarTodos();
-		//return pedidoService.buscarTodos();
 	}
 
 }

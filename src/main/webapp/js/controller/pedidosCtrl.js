@@ -8,6 +8,7 @@ app.controller("pedidosCtrl", function($scope, $http){
 	carregarLojas();
 	carregarMarcas();
 
+
 	function carregarLojas () {
 
 		console.log("Carregando Lojas")
@@ -45,7 +46,8 @@ app.controller("pedidosCtrl", function($scope, $http){
 
 		console.log("Carregando pedidos")
 		$http.get("/pedidos").then(function successCallback(response) {
-		    console.log(response.data[0]);
+			console.log("=========")
+		    console.log(response.data);
 		    for (index in response.data) {
 		    	$scope.pedidos.push(response.data[index]);
 		    }

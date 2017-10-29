@@ -21,6 +21,8 @@ public class Pedido {
 	private String observacoes;
 	private String loja;
 	private String marca;
+	private double valorTotal;
+	private int desconto;
 //	@ManyToOne
 //	@JoinColumn(name = "loja_id")
 //	private Loja loja;
@@ -104,6 +106,21 @@ public class Pedido {
 		this.produtos = produtos;
 	}
 	
+	public double getValorTotal() {
+		return this.valorTotal;
+	}
+	
+	public void setValorTotal (double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+	
+	public double getDesconto() {
+		return this.desconto;
+	}
+	
+	public void setDesconto (int desconto) {
+		this.desconto = desconto;
+	}
 	
 	
 }

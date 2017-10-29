@@ -1,0 +1,25 @@
+<div class="container text-center">
+
+	<h1>Finanças</h1>
+	<br>
+	<br>			
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th class="text-center">Mês</th>
+				<th class="text-center">Valor dos Pedidos</th>
+				<th class="text-center">Valor a Pagar</th>
+			</tr>
+			
+		</thead>
+		<tbody>
+			
+			<tr ng-repeat="mes in meses">
+				<td>{{mes.nome}}</td>
+				<td>{{mes.valorDosPedidos}}</td>
+				<td>{{mes.valorAPagar}}</td>
+			</tr>
+			
+		</tbody>
+	</table>
+</div>
