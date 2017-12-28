@@ -1,6 +1,10 @@
 app.config(function ($routeProvider){
 	$routeProvider
     .when("/", {
+        templateUrl : "views/login.html",
+        controller: "loginCtrl"
+    })
+    .when("/index", {
         templateUrl : "views/pedidos.html",
         controller: "pedidosCtrl"
     })
