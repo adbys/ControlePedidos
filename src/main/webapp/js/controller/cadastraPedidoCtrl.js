@@ -21,11 +21,11 @@ app.controller("cadastraPedidoCtrl", function($scope, $http, toastr){
 
 		pedido.valorTotal = valorTotal
 		
-		console.log(pedido)
+		console.log(pedido.loja)
 
 		$http.post("/pedidos", pedido).then(function successCallback(response) {
-		    console.log(response);
-		    toastr.success("Pedido adicionado com sucesso!");
+		    console.log(response.data);
+		    toastr.success("Pedido com identificador " + response.data + " adicionado com sucesso!");
 		  }, function errorCallback(response) {
 		    // called asynchronously if an error occurs
 		    // or server returns response with an error status.
@@ -39,15 +39,7 @@ app.controller("cadastraPedidoCtrl", function($scope, $http, toastr){
 
 	}
 
-	$scope.salvar = function () {
-		console.log($scope.produtos);
-		$scope.pedido.produtos = $scope.produtos;
-		console.log($scope.pedido);
-
-	}
-
-
-	$scope.addNovo = function() {
+	$scope.addNovoProduto = function() {
 	    $scope.produtos.push({
 	      nome: '',
 	      quantidade: '',
@@ -55,19 +47,6 @@ app.controller("cadastraPedidoCtrl", function($scope, $http, toastr){
 	      precoCusto: '',
 	      precoVenda: ''
 	    });
-	}
-
-	$scope.limparFormulario = function () {
-
-		$scope.produtos = [{
-			nome: '',
-		    quantidade: '',
-		    categoria: '',
-		    precoCusto: '',
-		    precoVenda: ''
-
-		}];
-
 	}
 	
 	$scope.lojas = [];

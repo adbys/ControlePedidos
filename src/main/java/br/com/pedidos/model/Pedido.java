@@ -1,14 +1,15 @@
 package br.com.pedidos.model;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido {
@@ -19,43 +20,48 @@ public class Pedido {
 	private String dataPedido;
 	private String dataRecebimento;
 	private String observacoes;
-	private String loja;
-	private String marca;
 	private double valorTotal;
 	private int desconto;
-//	@ManyToOne
-//	@JoinColumn(name = "loja_id")
-//	private Loja loja;
-//	@ManyToOne
-//	@JoinColumn(name = "marca_id")
-//	private Marca marca;
 	@ElementCollection
-	@CollectionTable(
-		name="produtos",
-		joinColumns=@JoinColumn(name="pedido_id")
-	)
-	private List<Produto> produtos;
+	private Set<Produto> produtos;
+	@OneToOne
+	@JoinColumn(name = "loja_id")
+	private Loja loja;
+	@OneToOne
+	@JoinColumn(name = "marca_id")
+	private Marca marca;
+//	@ElementCollection
+//	@CollectionTable( 
+//		name="produtos",
+//		joinColumns=@JoinColumn(name="pedido_id")
+//	)
+//	private List<Produto> produtos;
 	
-	public String getLoja() {
+	public Loja getLoja() {
 		return this.loja;
 	}
 	
-	public String getMarca() {
+	public Marca getMarca() {
 		return this.marca;
 	}
 	
-	public void setLoja(String loja) {
+	public void setLoja(Loja loja) {
 		this.loja = loja;
 	}
 
-	public void setMarca(String marca) {
+	public void setMarca(Marca marca) {
 		this.marca = marca;
+	}
+	
+
+	public Pedido() {
+		this.produtos = new HashSet<Produto>();
 	}
 
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -75,21 +81,6 @@ public class Pedido {
 	public void setDataRecebimento(String dataRecebimento) {
 		this.dataRecebimento = dataRecebimento;
 	}
-	
-//	public Loja getLoja() {
-//		return loja;
-//	}
-//	
-//	public void setLoja(Loja loja) {
-//		this.loja = loja;
-//	}
-//	
-//	public Marca getMarca() {
-//		return marca;
-//	}
-//	public void setMarca(Marca marca) {
-//		this.marca = marca;
-//	}
 
 	public String getObservacoes() {
 		return observacoes;
@@ -97,13 +88,6 @@ public class Pedido {
 	
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
-	}
-	
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
 	}
 	
 	public double getValorTotal() {
@@ -122,5 +106,12 @@ public class Pedido {
 		this.desconto = desconto;
 	}
 	
+	public Set<Produto> getProdutos() {
+		return produtos;
+	}
+	
+	public void setProdutos(Set<Produto> produtos) {
+		this.produtos = produtos;
+	}
 	
 }

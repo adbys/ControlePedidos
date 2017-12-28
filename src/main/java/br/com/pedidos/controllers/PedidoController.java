@@ -19,16 +19,11 @@ public class PedidoController {
 	PedidoService pedidoService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Pedido salvePedido (@RequestBody Pedido pedido) {
-		
-		System.out.println(pedido.getMarca());
-		System.out.println(pedido.getProdutos().get(0));
-		System.out.println(pedido.getValorTotal());
-		System.out.println(pedido.getDesconto());
+	public Long salvePedido (@RequestBody Pedido pedido) {
 		
 		pedidoService.salvarPedido(pedido);
 		
-		return pedido;
+		return pedido.getId();
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)

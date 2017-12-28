@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-@Embeddable
 public class Marca {
 
 	@Id
@@ -50,13 +49,5 @@ public class Marca {
 	public void setCodigo (String codigo) {
 		this.codigo = codigo;
 	}
-	
-//	public List<Pedido> getPedidos() {
-//		return this.pedidos;
-//	}
-//
-//	public void setPedidos(List<Pedido> pedidos) {
-//		this.pedidos = pedidos;
-//	}
 
 }
