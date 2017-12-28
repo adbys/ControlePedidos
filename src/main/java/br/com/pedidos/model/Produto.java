@@ -2,6 +2,7 @@ package br.com.pedidos.model;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 
 @Embeddable
@@ -9,7 +10,8 @@ public class Produto {
 	
 	private String nome;
 	private int quantidade;
-	private String categoria;
+	@OneToOne
+	private Categoria categoria;
 	private double precoCusto;
 	private double precoVenda;
 	
@@ -30,11 +32,11 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 	
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 	
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 	

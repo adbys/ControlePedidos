@@ -30,12 +30,7 @@ public class Pedido {
 	@OneToOne
 	@JoinColumn(name = "marca_id")
 	private Marca marca;
-//	@ElementCollection
-//	@CollectionTable( 
-//		name="produtos",
-//		joinColumns=@JoinColumn(name="pedido_id")
-//	)
-//	private List<Produto> produtos;
+
 	
 	public Loja getLoja() {
 		return this.loja;
