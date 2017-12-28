@@ -1,9 +1,10 @@
-app.controller("lojaCtrl", function($scope, $http, toastr){
+app.controller("lojaCtrl", function($scope, $http, toastr, $location){
 
 	$scope.salvarLoja = function (loja) {
 		console.log(loja);
 		$http.post("/loja", loja).then(function successCallback(response) {
 		    console.log(response);
+		    $location.path("/index");
 		    toastr.success("Loja adicionada com sucesso!");
 		  }, function errorCallback(response) {
 		    // called asynchronously if an error occurs

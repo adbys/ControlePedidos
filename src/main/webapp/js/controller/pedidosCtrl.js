@@ -46,7 +46,6 @@ app.controller("pedidosCtrl", function($scope, $http){
 
 		console.log("Carregando pedidos")
 		$http.get("/pedidos").then(function successCallback(response) {
-			console.log("=========")
 		    console.log(response.data);
 		    for (index in response.data) {
 		    	$scope.pedidos.push(response.data[index]);
