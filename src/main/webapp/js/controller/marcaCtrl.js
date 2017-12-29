@@ -1,8 +1,8 @@
-app.controller("marcaCtrl", function($scope, $http, toastr, $location){
+app.controller("marcaCtrl", function($scope, toastr, $location, marcaService){
 
 	$scope.salvarMarca = function (marca) {
 		console.log(marca);
-		$http.post("/marca", marca).then(function successCallback(response) {
+		marcaService.salvarMarca(marca).then(function successCallback(response) {
 		    console.log(response);
 		   	$location.path("/index");
 		   	toastr.success("Marca adicionada com sucesso!");

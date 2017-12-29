@@ -28,7 +28,7 @@ public class CategoriaController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public Categoria saveCategoria (@RequestBody Categoria categoria) {
-		
+	
 		categoriaService.salvarCategoria(categoria);
 		
 		return categoria;

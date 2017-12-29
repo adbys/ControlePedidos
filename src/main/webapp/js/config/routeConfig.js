@@ -6,12 +6,27 @@ app.config(function ($routeProvider){
     })
     .when("/index", {
         templateUrl : "views/pedidos.html",
-        controller: "pedidosCtrl"
-        //TODO: resolve e API para carregar dados
+        controller: "pedidosCtrl",
+        resolve: {
+            pedidos: function(pedidoService) {
+                return pedidoService.carregarPedidos();
+            }
+        }
     })
     .when("/cadastrar", {
         templateUrl : "views/cadastraPedido.html",
-        controller: "cadastraPedidoCtrl"
+        controller: "cadastraPedidoCtrl",
+        resolve: {
+            lojas: function(lojaService) {
+                return lojaService.carregarLojas();
+            },
+            marcas: function(marcaService) {
+                return marcaService.carregarMarcas();
+            },
+            categorias: function(categoriaService) {
+                return categoriaService.carregarCategorias();
+            }
+        }
     })
     .when("/marca", {
         templateUrl : "views/marca.html",

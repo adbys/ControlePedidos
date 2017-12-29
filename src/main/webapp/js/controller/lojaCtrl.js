@@ -1,8 +1,8 @@
-app.controller("lojaCtrl", function($scope, $http, toastr, $location){
+app.controller("lojaCtrl", function($scope, toastr, $location, lojaService){
 
 	$scope.salvarLoja = function (loja) {
 		console.log(loja);
-		$http.post("/loja", loja).then(function successCallback(response) {
+		lojaService.salvarLoja(loja).then(function successCallback(response) {
 		    console.log(response);
 		    $location.path("/index");
 		    toastr.success("Loja adicionada com sucesso!");
