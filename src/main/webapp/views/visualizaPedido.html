@@ -1,0 +1,66 @@
+<div class="container text-center">
+
+	<form>
+		<fieldset class="external-fieldset">
+			<div class="container">
+				
+				<h1>Pedido {{pedido.id}}</h1>
+    			
+				<div class="form-group">
+					<label class="field" for="data-pedido">Data de pedido: </label>
+					{{pedido.dataPedido}}
+					<!--<label class="field" for="date">Data de recebimento</label>
+					<input ng-model="pedido.dataRecebimento" class="textbox-300" type="date" name="date" id="date" min="2017-01-01">-->
+				</div>
+				<div class="form-group">
+					<label class="field">Loja: </label>
+					{{pedido.loja}}
+				</div>
+				<div class="form-group">
+					<label class="field" >Marca: </label>
+					{{pedido.marca}}
+				</div>
+				<div class="form-group">
+					<label class="field">Observações: </label>
+					{{pedido.observacoes}}
+				</div>
+			</div>
+
+			<h1>Produtos</h1>
+
+			<table ng-show="pedido.produtos.length != 0" class="table table-hover">
+				<thead>
+					<tr>
+						<th class="text-center">Produto</th>
+						<th class="text-center">Quantidade</th>
+						<th class="text-center">Categoria</th>
+						<th class="text-center">Preço Custo</th>
+						<th class="text-center">Preço Venda</th>
+						<th class="text-center">Quantidade Recebida</th>
+					</tr>
+					
+				</thead>
+				<tbody>
+					
+					<tr ng-repeat="produto in pedido.produtos">
+						<td>{{produto.nome}}</td>
+						<td>{{produto.quantidade}}</td>
+						<td>{{produto.categoria.nome}}</td>
+						<td>{{produto.precoCusto}}</td>
+						<td>{{produto.precoVenda}}</td>
+					</tr>
+					
+				</tbody>
+			</table>
+		
+
+
+			<button ng-click="" class="btn btn-primary">Salvar</button>
+			<button class="btn">Limpar</button>
+			
+		</fieldset>
+	</form>
+
+
+
+</div>

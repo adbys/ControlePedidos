@@ -23,7 +23,6 @@ app.config(function ($stateProvider){
         },
         resolve: {
             pedidos: function(pedidoService) {
-                console.log("chamou");
                 return pedidoService.carregarPedidos();
             }
         }
@@ -97,6 +96,15 @@ app.config(function ($stateProvider){
             'body': {
                 templateUrl : "views/financas.html",
                 controller: "financasCtrl"
+                
+            }
+        }
+    }).state("visualizaPedido", {
+        url: "/visualizaPedido/:pedidoId",
+        views: {
+            'body': {
+                templateUrl : "views/visualizaPedido.html",
+                controller: "visualizaPedidoCtrl"
                 
             }
         }

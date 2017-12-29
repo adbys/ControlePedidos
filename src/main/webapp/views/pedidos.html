@@ -1,4 +1,3 @@
-
 <div class="container text-center">
 
 	<h1>Pedidos</h1>
@@ -22,7 +21,7 @@
 		<tbody>
 			
 			<tr ng-repeat="pedido in pedidos">
-				<td>{{pedido.id}}</td>
+				<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
 				<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
 				<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
 				<td>{{pedido.loja.nome}}</td>
@@ -33,4 +32,5 @@
 			
 		</tbody>
 	</table>
+
 </div>
