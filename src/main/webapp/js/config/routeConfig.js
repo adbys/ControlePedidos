@@ -7,6 +7,7 @@ app.config(function ($routeProvider){
     .when("/index", {
         templateUrl : "views/pedidos.html",
         controller: "pedidosCtrl"
+        //TODO: resolve e API para carregar dados
     })
     .when("/cadastrar", {
         templateUrl : "views/cadastraPedido.html",
@@ -28,5 +29,6 @@ app.config(function ($routeProvider){
         templateUrl : "views/financas.html",
         controller: "financasCtrl"
     })
+    .otherwise({redirectTo:"/index"});
 
 });

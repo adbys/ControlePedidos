@@ -19,7 +19,7 @@ public class PedidoController {
 	PedidoService pedidoService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Long salvePedido (@RequestBody Pedido pedido) {
+	public Long salvePedido (@RequestBody Pedido pedido) { 
 		
 		pedidoService.salvarPedido(pedido);
 		
