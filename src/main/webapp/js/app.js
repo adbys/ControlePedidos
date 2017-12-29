@@ -1,1 +1,1 @@
-const app = angular.module("controlePedidos",['ngRoute', 'toastr']);
+const app = angular.module("controlePedidos",['toastr', 'ui.router']);

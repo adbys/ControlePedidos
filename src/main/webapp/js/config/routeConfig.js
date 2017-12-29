@@ -1,21 +1,45 @@
-app.config(function ($routeProvider){
-	$routeProvider
-    .when("/", {
-        templateUrl : "views/login.html",
-        controller: "loginCtrl"
+app.config(function ($stateProvider){
+	$stateProvider
+    .state("login", {
+        url: "",
+        views: {
+            'body': {
+                templateUrl : "views/login.html",
+                controller: "loginCtrl"        
+            }
+        }
+        
     })
-    .when("/index", {
-        templateUrl : "views/pedidos.html",
-        controller: "pedidosCtrl",
+    .state("index", {
+        url: "/index",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/pedidos.html",
+                controller: "pedidosCtrl"
+            }
+        },
         resolve: {
             pedidos: function(pedidoService) {
+                console.log("chamou");
                 return pedidoService.carregarPedidos();
             }
         }
     })
-    .when("/cadastrar", {
-        templateUrl : "views/cadastraPedido.html",
-        controller: "cadastraPedidoCtrl",
+    .state("cadastrar", {
+        url: "/cadastrar",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/cadastraPedido.html",
+                controller: "cadastraPedidoCtrl"
+                
+            }
+        },
         resolve: {
             lojas: function(lojaService) {
                 return lojaService.carregarLojas();
@@ -28,22 +52,54 @@ app.config(function ($routeProvider){
             }
         }
     })
-    .when("/marca", {
-        templateUrl : "views/marca.html",
-        controller: "marcaCtrl"
+    .state("marca", {
+        url: "/marca",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/marca.html",
+                controller: "marcaCtrl"
+            }
+        }
     })
-    .when("/loja", {
-        templateUrl : "views/loja.html",
-        controller: "lojaCtrl"
+    .state("loja", {
+        url: "/loja",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/loja.html",
+                controller: "lojaCtrl"
+            }
+        }
     })
-    .when("/categoria", {
-        templateUrl : "views/categoria.html",
-        controller: "categoriaCtrl"
+    .state("categoria", {
+        url: "/categoria",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/categoria.html",
+                controller: "categoriaCtrl"    
+            }
+        }
     })
-    .when("/financas", {
-        templateUrl : "views/financas.html",
-        controller: "financasCtrl"
-    })
-    .otherwise({redirectTo:"/index"});
+    .state("financas", {
+        url: "/financas",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/financas.html",
+                controller: "financasCtrl"
+                
+            }
+        }
+    });
 
 });

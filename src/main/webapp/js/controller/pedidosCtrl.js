@@ -1,4 +1,4 @@
-app.controller("pedidosCtrl", function($scope, pedidoService, pedidos){
+app.controller("pedidosCtrl", function($scope, pedidos) {
 
 	$scope.pedidos = pedidos.data;
 
