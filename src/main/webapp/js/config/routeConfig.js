@@ -102,10 +102,19 @@ app.config(function ($stateProvider){
     }).state("visualizaPedido", {
         url: "/visualizaPedido/:pedidoId",
         views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
             'body': {
                 templateUrl : "views/visualizaPedido.html",
                 controller: "visualizaPedidoCtrl"
                 
+            }
+        },
+        resolve: {
+            pedido: function(pedidoService, $stateParams) {
+                console.log()
+                return pedidoService.buscarPedidoPorId($stateParams.pedidoId);
             }
         }
     });

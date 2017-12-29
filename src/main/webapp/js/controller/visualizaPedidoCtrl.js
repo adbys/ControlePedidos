@@ -1,5 +1,5 @@
-app.controller("visualizaPedidoCtrl", function($scope){
+app.controller("visualizaPedidoCtrl", function($scope, pedido){
 
-
+	$scope.pedido = pedido.data;
 
 });

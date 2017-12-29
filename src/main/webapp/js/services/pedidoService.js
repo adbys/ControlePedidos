@@ -18,10 +18,15 @@ app.factory("pedidoService", function ($http) {
 		return $http.get("/pedidos");
 	};
 
+	var _buscarPedidoPorId = function (id) {
+		return $http.get("/pedidos/" + id);
+	}
+
 
 	return {
 		cadastraPedido : _cadastraPedido,
-		carregarPedidos : _carregarPedidos
+		carregarPedidos : _carregarPedidos,
+		buscarPedidoPorId : _buscarPedidoPorId
 	};
 
 }); 

@@ -23,5 +23,9 @@ public class PedidoService {
 	public List<Pedido> buscarTodos () {
 		return this.pedidoRepository.findAll();
 	}
+	
+	public Pedido buscarPorId (long id) {
+		return this.pedidoRepository.findById(id);
+	}
 
 }

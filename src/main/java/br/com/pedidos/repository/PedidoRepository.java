@@ -6,4 +6,6 @@ import br.com.pedidos.model.Pedido;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
+	public Pedido findById(long id);
+	
 }
