@@ -7,8 +7,23 @@
 	<p ng-show="pedidos.length == 0">Não há pedidos cadastrados.</p>
 	<div ng-show="pedidos.length != 0">
 
-		<input class="form-control" type="date" ng-model="dateFrom"> </input>
-		<input class="form-control" type="date" ng-model="dateEnd"> </input>
+		<div class="row">
+  			<div class="col-sm-4">
+  				<label>Data inicio: </label>
+  			</div>
+			<div class="col-sm-4">
+				<input class="form-control" type="date" ng-model="dateFrom"> </input>
+			</div>
+		</div>
+		<div ng-hide="dateFrom == null" class="row">
+  			<div class="col-sm-4">
+  				<label>Data final: </label> 
+  			</div>
+			<div class="col-sm-4">
+				<input class="form-control" type="date" ng-model="dateEnd"> </input>
+			</div>
+		</div>
+		<br>
 		<button ng-click="limparFiltros()" class="btn btn-default"> Limpar Filtros</button>			
 		<table datatable="ng" id="example" class="table table-hover">
 			<thead>
