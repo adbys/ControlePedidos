@@ -4,24 +4,28 @@
 		<fieldset class="external-fieldset">
 			
 			<h1>Pedido {{pedido.id}}</h1>
+			<br>
 			
-			
-				<div class="form-group">
+			<div class="form-group">
+				<div>
 					<label class="field">Data de pedido: </label>
 					<p class="dadoPedido">{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</p>
 				</div>
-				<div class="form-group">
+				<div>
 					<label class="field">Loja: </label>
 					<p class="dadoPedido">{{pedido.loja.nome}}</p>
 				</div>
-				<div class="form-group">
+				<div>
 					<label class="field" >Marca: </label>
 					<p class="dadoPedido">{{pedido.marca.nome}}</p>
 				</div>
-				<div class="form-group">
+				<div>
 					<label class="field">Observações: </label>
 					<p class="dadoPedido">{{pedido.observacoes}}</p>
 				</div>
+				
+			</div>
+			<br>
 			
 
 			<h1>Produtos</h1>

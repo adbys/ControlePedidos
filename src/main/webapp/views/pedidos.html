@@ -4,8 +4,10 @@
 	<br>
 	<br>
 
-	<p ng-show="pedidos.length == 0">Não há pedidos cadastrados.</p>			
-	<table id="example" ng-show="pedidos.length != 0" class="table table-hover">
+	<p ng-show="pedidos.length == 0">Não há pedidos cadastrados.</p>
+	<input class="form-control" type="date" ng-model="dateFrom"> </input>
+	<input class="form-control" type="date" ng-model="dateEnd"> </input>			
+	<table datatable="ng" id="example" ng-show="pedidos.length != 0" class="table table-hover">
 		<thead>
 			<tr>
 				<th class="text-center">Id</th>
@@ -21,7 +23,7 @@
 		</thead>
 		<tbody>
 			
-			<tr ng-repeat="pedido in pedidos">
+			<tr ng-repeat="pedido in pedidos | dateFilter:dateFrom:dateEnd | date: 'dd/MM/yyyy'">
 				<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
 				<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
 				<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>

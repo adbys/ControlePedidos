@@ -1,11 +1,13 @@
 <div class="container text-center">
 	<h1>Cadastro de Pedido</h1>
+	<br>
 
 	<form>
 		<fieldset class="external-fieldset">
 			<div class="container">
 				
-				<h2>Informações</h2>
+				<h1>Informações</h1>
+				<br>
     			
 				<div class="form-group">
 					<label class="field" for="data-pedido">Data de pedido</label>
@@ -20,11 +22,11 @@
 					<input ng-model="pedido.desconto" class="textbox-300" name="desconto" placeholder="Digite o desconto total">
 					</input>
 				</div>
-				<div class="form-group">
+				<!--<div class="form-group">
 					<label class="field" for="formaDePagamento">Forma de Pagamento</label>
 					<select ng-model="pedido.formaDePagamento" ng-options="loja.nome as loja.nome for loja in lojas" class="selectbox-300" name="formaDePagamento">
 					</select>
-				</div>
+				</div>-->
 				<div class="form-group">
 					<label class="field" for="lojaSelect">Loja</label>
 					<select ng-model="pedido.loja" ng-options="loja as loja.nome for loja in lojas" class="selectbox-300" name="lojaSelect">
@@ -40,8 +42,9 @@
 					<textarea ng-model="pedido.observacoes" class="textarea-300" name="observacoes" placeholder="Observações..."></textarea>
 				</div>
 			</div>
+			<br>
 		
-			<h2>Produtos</h2>
+			<h1>Produtos</h1>
 
 			<div ng-model="pedido.produtos" ng-repeat="produto in produtos">
 
