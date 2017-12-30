@@ -5,40 +5,43 @@
 	<br>
 
 	<p ng-show="pedidos.length == 0">Não há pedidos cadastrados.</p>
-	<input class="form-control" type="date" ng-model="dateFrom"> </input>
-	<input class="form-control" type="date" ng-model="dateEnd"> </input>
-	<button ng-click="limparFiltros()" class="btn btn-outline-danger"> Limpar Filtros</button>			
-	<table datatable="ng" id="example" ng-show="pedidos.length != 0" class="table table-hover">
-		<thead>
-			<tr>
-				<th class="text-center">Id</th>
-				<th class="text-center">Data do Pedido</th>
-				<th class="text-center">Data do Recebimento</th>
-				<th class="text-center">Loja</th>
-				<th class="text-center">Marca</th>
-				<th class="text-center">Valor Total</th>
-				<th class="text-center">Observações</th>
-				<th class="text-center">Recebido</th>
-			</tr>
-			
-		</thead>
-		<tbody>
-			
-			<tr ng-repeat="pedido in pedidos | dateFilter:dateFrom:dateEnd | date: 'dd/MM/yyyy'">
-				<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
-				<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
-				<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
-				<td>{{pedido.loja.nome}}</td>
-				<td>{{pedido.marca.nome}}</td>
-				<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100)}}</td>
-				<td>{{pedido.observacoes}}</td>
-				<td>
-					<img src="utils/checkIcon.svg" ng-show="pedido.recebido" width="14" height="15">
-					</img>
-				</td>
-			</tr>
-			
-		</tbody>
-	</table>
+	<div ng-show="pedidos.length != 0">
+
+		<input class="form-control" type="date" ng-model="dateFrom"> </input>
+		<input class="form-control" type="date" ng-model="dateEnd"> </input>
+		<button ng-click="limparFiltros()" class="btn btn-default"> Limpar Filtros</button>			
+		<table datatable="ng" id="example" class="table table-hover">
+			<thead>
+				<tr>
+					<th class="text-center">Id</th>
+					<th class="text-center">Data do Pedido</th>
+					<th class="text-center">Data do Recebimento</th>
+					<th class="text-center">Loja</th>
+					<th class="text-center">Marca</th>
+					<th class="text-center">Valor Total</th>
+					<th class="text-center">Observações</th>
+					<th class="text-center">Recebido</th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				
+				<tr ng-repeat="pedido in pedidos | dateFilter:dateFrom:dateEnd | date: 'dd/MM/yyyy'">
+					<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
+					<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
+					<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
+					<td>{{pedido.loja.nome}}</td>
+					<td>{{pedido.marca.nome}}</td>
+					<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100)}}</td>
+					<td>{{pedido.observacoes}}</td>
+					<td>
+						<img src="utils/checkIcon.svg" ng-show="pedido.recebido" width="14" height="15">
+						</img>
+					</td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
 
 </div>
