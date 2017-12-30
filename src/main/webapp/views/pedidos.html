@@ -6,7 +6,8 @@
 
 	<p ng-show="pedidos.length == 0">Não há pedidos cadastrados.</p>
 	<input class="form-control" type="date" ng-model="dateFrom"> </input>
-	<input class="form-control" type="date" ng-model="dateEnd"> </input>			
+	<input class="form-control" type="date" ng-model="dateEnd"> </input>
+	<button ng-click="limparFiltros()" class="btn btn-outline-danger"> Limpar Filtros</button>			
 	<table datatable="ng" id="example" ng-show="pedidos.length != 0" class="table table-hover">
 		<thead>
 			<tr>

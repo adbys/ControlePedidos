@@ -8,7 +8,9 @@ app.filter("dateFilter", function () {
 
 				for (var i in input) {
 					var dataPedido = new Date(input[i].dataPedido);
-					if (dataPedido >= dateFrom && dataPedido <= dateEnd) inputs.push(input[i]);
+					var dataRecebimento = new Date(input[i].dataRecebimento);
+
+					if ((dataPedido >= dateFrom && dataPedido <= dateEnd) || (dataRecebimento >= dateFrom && dataRecebimento <= dateEnd)) inputs.push(input[i]);
 				}
 				return inputs;
 				
@@ -17,8 +19,9 @@ app.filter("dateFilter", function () {
 			for (var i in input) {
 
 				var dataPedido = new Date(input[i].dataPedido);
+				var dataRecebimento = new Date(input[i].dataRecebimento);
 
-				if (dataPedido >= dateFrom) inputs.push(input[i]);
+				if (dataPedido >= dateFrom || dataRecebimento >= dateFrom) inputs.push(input[i]);
 			}
 
 			return inputs;
