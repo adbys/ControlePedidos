@@ -20,9 +20,17 @@ public class PedidoController {
 	PedidoService pedidoService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Long salvePedido (@RequestBody Pedido pedido) { 
+	public long salvePedido (@RequestBody Pedido pedido) { 
 		
 		pedidoService.salvarPedido(pedido);
+		
+		return pedido.getId();
+	}
+	
+	@RequestMapping(method = RequestMethod.PUT)
+	public long atualizarPedido (@RequestBody Pedido pedido) {
+		
+		pedidoService.atualizarPedido(pedido);
 		
 		return pedido.getId();
 	}

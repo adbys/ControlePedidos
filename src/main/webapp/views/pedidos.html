@@ -15,6 +15,7 @@
 				<th class="text-center">Marca</th>
 				<th class="text-center">Valor Total</th>
 				<th class="text-center">Observações</th>
+				<th class="text-center">Recebido</th>
 			</tr>
 			
 		</thead>
@@ -28,6 +29,10 @@
 				<td>{{pedido.marca.nome}}</td>
 				<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100)}}</td>
 				<td>{{pedido.observacoes}}</td>
+				<td>
+					<img src="utils/checkIcon.svg" ng-show="pedido.recebido" width="14" height="15">
+					</img>
+				</td>
 			</tr>
 			
 		</tbody>

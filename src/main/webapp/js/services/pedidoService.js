@@ -22,11 +22,16 @@ app.factory("pedidoService", function ($http) {
 		return $http.get("/pedidos/" + id);
 	}
 
+	var _atualizarPedido = function (pedido) {
+		return $http.put("/pedidos", pedido);
+	}
+
 
 	return {
 		cadastraPedido : _cadastraPedido,
 		carregarPedidos : _carregarPedidos,
-		buscarPedidoPorId : _buscarPedidoPorId
+		buscarPedidoPorId : _buscarPedidoPorId,
+		atualizarPedido : _atualizarPedido
 	};
 
 }); 

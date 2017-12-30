@@ -1,7 +1,7 @@
 package br.com.pedidos.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.OrderColumn;
 
 @Entity
 public class Pedido {
@@ -23,15 +24,25 @@ public class Pedido {
 	private double valorTotal;
 	private int desconto;
 	@ElementCollection
-	private Set<Produto> produtos;
+	@OrderColumn
+	private Collection<Produto> produtos;
 	@OneToOne
 	@JoinColumn(name = "loja_id")
 	private Loja loja;
 	@OneToOne
 	@JoinColumn(name = "marca_id")
 	private Marca marca;
+	private boolean recebido;
 
 	
+	public boolean isRecebido() {
+		return recebido;
+	}
+
+	public void setRecebido(boolean recebido) {
+		this.recebido = recebido;
+	}
+
 	public Loja getLoja() {
 		return this.loja;
 	}
@@ -50,7 +61,7 @@ public class Pedido {
 	
 
 	public Pedido() {
-		this.produtos = new HashSet<Produto>();
+		this.produtos = new ArrayList<Produto>();
 	}
 
 	public Long getId() {
@@ -101,11 +112,11 @@ public class Pedido {
 		this.desconto = desconto;
 	}
 	
-	public Set<Produto> getProdutos() {
+	public Collection<Produto> getProdutos() {
 		return produtos;
 	}
 	
-	public void setProdutos(Set<Produto> produtos) {
+	public void setProdutos(Collection<Produto> produtos) {
 		this.produtos = produtos;
 	}
 	

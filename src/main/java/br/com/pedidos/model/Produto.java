@@ -2,6 +2,7 @@ package br.com.pedidos.model;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 
@@ -14,8 +15,17 @@ public class Produto {
 	private Categoria categoria;
 	private double precoCusto;
 	private double precoVenda;
+	private boolean recebido;
 	
 	
+	public boolean isRecebido() {
+		return recebido;
+	}
+
+	public void setRecebido(boolean recebido) {
+		this.recebido = recebido;
+	}
+
 	public String getNome() {
 		return nome;
 	}

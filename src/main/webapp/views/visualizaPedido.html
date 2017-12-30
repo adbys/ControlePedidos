@@ -34,7 +34,7 @@
 						<th class="text-center">Categoria</th>
 						<th class="text-center">Preço Custo</th>
 						<th class="text-center">Preço Venda</th>
-						<th class="text-center">Quantidade Recebida</th>
+						<th class="text-center">Recebido</th>
 					</tr>
 					
 				</thead>
@@ -46,7 +46,12 @@
 						<td>{{produto.categoria.nome}}</td>
 						<td>{{produto.precoCusto}}</td>
 						<td>{{produto.precoVenda}}</td>
-						<td></td>
+						<td>
+							<div class="form-check">
+  								<input ng-model="produto.recebido" class="form-check-input" type="checkbox" id="produtoRecebido">
+
+							</div>
+						</td>
 					</tr>
 					
 				</tbody>
@@ -54,8 +59,7 @@
 		
 
 
-			<button ng-click="" class="btn btn-primary">Salvar</button>
-			<button class="btn">Limpar</button>
+			<button class="btn btn-primary" ng-click="atualizarPedido(pedido)">Salvar</button>
 			
 		</fieldset>
 	</form>

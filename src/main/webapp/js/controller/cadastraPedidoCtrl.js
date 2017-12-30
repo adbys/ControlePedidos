@@ -15,6 +15,7 @@ app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoS
 	}];
 
 	$scope.salvarPedido = function (pedido) {
+		console.log(pedido);
 		pedidoService.cadastraPedido(pedido, $scope.produtos).then(function successCallback(response) {
 		    console.log(response.data);
 		    $location.path("/index");
