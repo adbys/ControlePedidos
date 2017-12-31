@@ -1,18 +1,12 @@
 package br.com.pedidos.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Marca {
+public class Marca implements Comparable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -49,5 +43,12 @@ public class Marca {
 	public void setCodigo (String codigo) {
 		this.codigo = codigo;
 	}
+
+	@Override
+	public int compareTo(Object marca) {
+		Marca outraMarca = (Marca) marca;
+		return this.nome.compareToIgnoreCase(outraMarca.getNome());
+	}
+
 
 }

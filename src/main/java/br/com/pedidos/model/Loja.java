@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Loja {
+public class Loja implements Comparable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -33,6 +33,13 @@ public class Loja {
 	
 	public void setNome (String nome) {
 		this.nome = nome;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		Loja outraLoja = (Loja) o;
+
+		return this.nome.compareTo(outraLoja.getNome());
 	}
 
 

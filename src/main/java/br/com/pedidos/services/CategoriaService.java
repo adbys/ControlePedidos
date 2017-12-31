@@ -1,5 +1,6 @@
 package br.com.pedidos.services;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class CategoriaService {
 	}
 	
 	public List<Categoria> buscarTodas () {
-		return categoriaRepository.findAll();
+		
+		List<Categoria> categorias = categoriaRepository.findAll();
+		Collections.sort(categorias);
+		
+		return categorias;
 	}
 	
 }

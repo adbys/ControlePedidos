@@ -1,5 +1,6 @@
 package br.com.pedidos.services;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,11 @@ public class LojaService {
 	}
 	
 	public List<Loja> buscarTodas () {
-		return lojaRepository.findAll();
+		
+		List<Loja> lojas = lojaRepository.findAll();
+		Collections.sort(lojas);
+		
+		return lojas;
 	}
 
 }
