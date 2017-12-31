@@ -1,1 +1,1 @@
-const app = angular.module("controlePedidos",['toastr', 'ui.router']);
+const app = angular.module("controlePedidos",['toastr', 'ui.router', 'angularUtils.directives.dirPagination']);

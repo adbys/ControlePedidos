@@ -5,6 +5,7 @@ app.controller("pedidosCtrl", function($scope, pedidos, lojas, marcas) {
 	$scope.marcas = marcas.data;
 
 	$scope.limparFiltros = function() {
+		console.log(">>>>>");
 		$scope.dateFrom = undefined;
 		$scope.dateEnd = undefined;
 		$scope.idSearch = undefined;

@@ -14,7 +14,7 @@
 						<input class="form-control" ng-model="idSearch" type="text" name="" placeholder="Id" size="2">
 					</th>
 					<th>
-						<input class="form-control" class="form-control" type="date" ng-model="dateFrom"> </input>	
+						<input class="form-control" type="date" ng-model="dateFrom"> </input>	
 					</th>
 					<th>
 						<input class="form-control" class="form-control" type="date" ng-model="dateEnd"> </input>
@@ -66,7 +66,7 @@
 			
 			<tbody>
 				
-				<tr ng-repeat="pedido in pedidos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch}">
+				<tr dir-paginate="pedido in pedidos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch} | itemsPerPage:2">
 					<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
 					<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
 					<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
@@ -82,7 +82,17 @@
 				
 			</tbody>
 		</table>
-		<button ng-click="limparFiltros()" class="btn btn-default"> Limpar Filtros</button>	
 	</div>
+		<div class="row">
+			
+				<dir-pagination-controls
+		       		max-size="5"
+		       		direction-links="true"
+		       		boundary-links="true"
+		       		auto-hide="false"
+		       		clear-filters="limparFiltros()"
+		       	>
+		    	</dir-pagination-controls>
+		</div>
 
 </div>
