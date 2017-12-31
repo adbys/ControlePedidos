@@ -20,6 +20,18 @@
 					<p class="dadoPedido">{{pedido.marca.nome}}</p>
 				</div>
 				<div>
+					<label class="field" >Valor Total: </label>
+					<p class="dadoPedido">{{pedido.valorTotal | currency}}</p>
+				</div>
+				<div>
+					<label class="field" >Desconto: </label>
+					<p class="dadoPedido">{{pedido.desconto}}%</p>
+				</div>
+				<div>
+					<label class="field" >Valor Com Desconto: </label>
+					<p class="dadoPedido">{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100) | currency}}</p>
+				</div>
+				<div>
 					<label class="field">Observações: </label>
 					<p class="dadoPedido">{{pedido.observacoes}}</p>
 				</div>

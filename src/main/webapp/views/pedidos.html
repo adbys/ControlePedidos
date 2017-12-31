@@ -76,14 +76,14 @@
 					<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
 					<td>{{pedido.loja.nome}}</td>
 					<td>{{pedido.marca.nome}}</td>
-					<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100)}}</td>
+					<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100) | currency}}</td>
 					<td>{{pedido.observacoes}}</td>
 					<td>
-						<img src="utils/delivery.svg" ng-show="pedido.estado == 'RECEBIDO'" width="16" height="17">
+						<img src="utils/checked.svg" ng-show="pedido.estado == 'RECEBIDO'" width="16" height="17">
 						</img>
-						<img src="utils/delivery-2.svg" ng-show="pedido.estado == 'RECEBIDO_PARCIALMENTE'" width="16" height="17">
+						<img src="utils/checked-2.svg" ng-show="pedido.estado == 'RECEBIDO_PARCIALMENTE'" width="16" height="17">
 						</img>
-						<img src="utils/delivery-3.svg" ng-show="pedido.estado == 'NAO_RECEBIDO'" width="16" height="17">
+						<img src="utils/clock-3.svg" ng-show="pedido.estado == 'NAO_RECEBIDO'" width="16" height="17">
 						</img>
 					</td>
 				</tr>
