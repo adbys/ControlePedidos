@@ -24,6 +24,12 @@ app.config(function ($stateProvider){
         resolve: {
             pedidos: function(pedidoService) {
                 return pedidoService.carregarPedidos();
+            },
+            lojas: function(lojaService) {
+                return lojaService.carregarLojas();
+            },
+            marcas: function(marcaService) {
+                return marcaService.carregarMarcas();
             }
         }
     })
