@@ -39,20 +39,34 @@
 				</tr>	
 			</thead>
 			<tr>
-				<th class="text-center">Id</th>
-				<th class="text-center">Data do Pedido</th>
-				<th class="text-center">Data do Recebimento</th>
-				<th class="text-center">Loja</th>
-				<th class="text-center">Marca</th>
-				<th class="text-center">Valor Total</th>
-				<th class="text-center">Observações</th>
+				<th class="text-center" ng-click="sort('id')"> Id
+					<span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('dataPedido')"> Data do Pedido
+					<span class="glyphicon sort-icon" ng-show="sortKey=='dataPedido'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('dataRecebimento')"> Data do Recebimento
+					<span class="glyphicon sort-icon" ng-show="sortKey=='dataRecebimento'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('loja')"> Loja
+					<span class="glyphicon sort-icon" ng-show="sortKey=='loja'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('marca')"> Marca
+					<span class="glyphicon sort-icon" ng-show="sortKey=='marca'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('valorTotal')"> Valor Total
+					<span class="glyphicon sort-icon" ng-show="sortKey=='valorTotal'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('obs')"> Observações 
+					<span class="glyphicon sort-icon" ng-show="sortKey=='obs'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
 				<th class="text-center">Recebido</th>
 			</tr>
 				
 			
 			<tbody>
 				
-				<tr ng-repeat="pedido in pedidos | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch}">
+				<tr ng-repeat="pedido in pedidos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch}">
 					<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
 					<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
 					<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>

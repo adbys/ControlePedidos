@@ -11,7 +11,12 @@ app.controller("pedidosCtrl", function($scope, pedidos, lojas, marcas) {
 		$scope.lojaSearch = undefined;
 		$scope.marcaSearch = undefined;
 		$scope.valorTotalSearch = undefined;
-		$scope.obsSearch = undefined;//TODO: problema ao zerar o campo "" - elimina os null null - elimina os que tem valor
+		$scope.obsSearch = undefined;
 	}
+
+	$scope.sort = function(keyname) {
+        $scope.sortKey = keyname;   //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+    }
 
 });
