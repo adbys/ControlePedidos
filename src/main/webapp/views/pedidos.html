@@ -64,7 +64,9 @@
 				<th class="text-center" ng-click="sort('obs')"> Observações 
 					<span class="glyphicon sort-icon" ng-show="sortKey=='obs'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
 				</th>
-				<th class="text-center">Recebido</th>
+				<th class="text-center" ng-click="sort('estado')">Recebido
+					<span class="glyphicon sort-icon" ng-show="sortKey=='estado'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
 			</tr>
 				
 			
@@ -79,11 +81,11 @@
 					<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100) | currency}}</td>
 					<td>{{pedido.observacoes}}</td>
 					<td>
-						<img src="utils/checked.svg" ng-show="pedido.estado == 'RECEBIDO'" width="16" height="17">
+						<img src="utils/delivery.svg" ng-show="pedido.estado == 'RECEBIDO'" width="25" height="26">
 						</img>
-						<img src="utils/checked-2.svg" ng-show="pedido.estado == 'RECEBIDO_PARCIALMENTE'" width="16" height="17">
+						<img src="utils/delivery-2.svg" ng-show="pedido.estado == 'RECEBIDO_PARCIALMENTE'" width="25" height="26">
 						</img>
-						<img src="utils/clock-3.svg" ng-show="pedido.estado == 'NAO_RECEBIDO'" width="16" height="17">
+						<img src="utils/delivery-3.svg" ng-show="pedido.estado == 'NAO_RECEBIDO'" width="25" height="26">
 						</img>
 					</td>
 				</tr>
