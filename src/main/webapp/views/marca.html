@@ -1,22 +1,17 @@
 <div class="container text-center">
 
 	<h1>Cadastro de Marca</h1>
-	<form>
-		<fieldset>
+	<fieldset>
+		<form ng-submit="salvarMarca(marca)">
 			<div class="container">
 				<div class="form-group">	
 					<label class="field" for="marca">Marca</label>
-					<input ng-model="marca.nome" class="textbox-300" type="text" name="marca" id="marca" placeholder="Digite o nome da marca" required autofocus>
-				</div>
-				<div class="form-group">
-					<label class="field" for="codigo">Código</label>
-					<input ng-model="marca.codigo" class="textbox-300" type="text" name="codigo" id="codigo" placeholder="Digite o código da marca">
+					<input ng-model="marca.nome" class="textbox-300 form-control" type="text" name="marca" id="marca" placeholder="Digite o nome da marca" required autofocus>
 				</div>
 			</div>
 
-			<button ng-click="salvarMarca(marca)" class="btn btn-primary">Salvar</button>
-			<button class="btn">Limpar</button>
+			<button type="submit" class="btn btn-primary">Salvar</button>
 			
-		</fieldset>
-	</form>
+		</form>
+	</fieldset>
 </div>

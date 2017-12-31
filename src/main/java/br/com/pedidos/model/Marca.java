@@ -12,7 +12,6 @@ public class Marca implements Comparable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String nome;
-	private String codigo;
 //	@OneToMany(mappedBy = "marca", targetEntity = Pedido.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //	private List<Pedido> pedidos;
 	
@@ -36,13 +35,6 @@ public class Marca implements Comparable {
 		this.nome = nome;
 	}
 	
-	public String getCodigo () {
-		return this.codigo;
-	}
-	
-	public void setCodigo (String codigo) {
-		this.codigo = codigo;
-	}
 
 	@Override
 	public int compareTo(Object marca) {

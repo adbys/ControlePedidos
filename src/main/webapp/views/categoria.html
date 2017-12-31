@@ -3,16 +3,15 @@
 	<h1>Cadastro de Categoria</h1>
 	
 		<fieldset>
-			<div class="container">
-				<div class="form-group">	
-					<label class="field" for="categoria">Categoria</label>
-					<input ng-model="categoria.nome" class="textbox-300" type="text" name="categoria" id="categoria" placeholder="Digite o nome da categoria" required autofocus>
+			<form ng-submit="salvarCategoria(categoria)">
+				<div class="container">
+					<div class="form-group">	
+						<label class="field" for="categoria">Categoria</label>
+						<input ng-model="categoria.nome" class="textbox-300 form-control" type="text" name="categoria" id="categoria" placeholder="Digite o nome da categoria" required autofocus>
+					</div>
 				</div>
-			</div>
-
-			<button ng-click="salvarCategoria(categoria)" class="btn btn-primary">Salvar</button>
-			<button class="btn">Limpar</button>
-			
+				<button class="btn btn-primary">Salvar</button>
+			</form>
 		</fieldset>
 
 </div>

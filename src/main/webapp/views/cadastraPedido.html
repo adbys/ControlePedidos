@@ -2,8 +2,8 @@
 	<h1>Cadastro de Pedido</h1>
 	<br>
 
-	<form>
-		<fieldset class="external-fieldset">
+	<fieldset class="external-fieldset">
+		<form ng-submit="salvarPedido(pedido)">
 			<div class="container">
 				
 				<h1>Informações</h1>
@@ -11,15 +11,15 @@
     			
 				<div class="form-group">
 					<label class="field" for="data-pedido">Data de pedido</label>
-					<input ng-model="pedido.dataPedido" class="textbox-300" type="date" name="data-pedido" id="data-pedido" min="2017-01-01">
+					<input required="" ng-model="pedido.dataPedido" class="textbox-300 form-control" type="date" name="data-pedido" id="data-pedido" min="2017-01-01">
 				</div>
 				<div class="form-group">
 					<label class="field" for="date">Data de recebimento</label>
-					<input ng-model="pedido.dataRecebimento" class="textbox-300" type="date" name="date" id="date" min="2017-01-01">
+					<input required="" ng-model="pedido.dataRecebimento" class="textbox-300 form-control" type="date" name="date" id="date" min="2017-01-01">
 				</div>
 				<div class="form-group">
 					<label class="field" for="desconto">Desconto</label>
-					<input ng-model="pedido.desconto" class="textbox-300" name="desconto" placeholder="Digite o desconto total">
+					<input ng-model="pedido.desconto" class="textbox-300 form-control" name="desconto" placeholder="Digite o desconto total">
 					</input>
 				</div>
 				<!--<div class="form-group">
@@ -29,17 +29,19 @@
 				</div>-->
 				<div class="form-group">
 					<label class="field" for="lojaSelect">Loja</label>
-					<select ng-model="pedido.loja" ng-options="loja as loja.nome for loja in lojas" class="selectbox-300" name="lojaSelect">
+					<select ng-model="pedido.loja" ng-options="loja as loja.nome for loja in lojas" required="" class="selectbox-300 form-control" name="lojaSelect">
+						<option></option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label class="field" for="marcaSelect">Marca</label>
-					<select ng-model="pedido.marca" ng-options="marca as marca.nome for marca in marcas" class="selectbox-300" name="marcaSelect" id="marcaSelect">
+					<select required="" ng-model="pedido.marca" ng-options="marca as marca.nome for marca in marcas" class="selectbox-300 form-control" name="marcaSelect" id="marcaSelect">
+						<option></option>
 					</select>
 				</div>
 				<div class="form-group">
 					<label class="field" for="observacoes">Observações</label>
-					<textarea ng-model="pedido.observacoes" class="textarea-300" name="observacoes" placeholder="Observações..."></textarea>
+					<textarea ng-model="pedido.observacoes" class="textarea-300 form-control" name="observacoes" placeholder="Observações..."></textarea>
 				</div>
 			</div>
 			<br>
@@ -52,9 +54,7 @@
 		
 			</div>
 
-			<button ng-click="salvarPedido(pedido)" class="btn btn-primary">Salvar</button>
-			<button class="btn">Limpar</button>
-			
-		</fieldset>
-	</form>
+			<button type="submit" class="btn btn-primary">Salvar</button>	
+		</form>
+	</fieldset>
 </div>
