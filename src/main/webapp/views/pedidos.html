@@ -66,7 +66,7 @@
 			
 			<tbody>
 				
-				<tr dir-paginate="pedido in pedidos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch} | itemsPerPage:2">
+				<tr dir-paginate="pedido in pedidos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch} | itemsPerPage:20">
 					<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
 					<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
 					<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
