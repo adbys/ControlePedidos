@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,15 +34,18 @@ public class Pedido {
 	@OneToOne
 	@JoinColumn(name = "marca_id")
 	private Marca marca;
-	private boolean recebido;
+	@Enumerated(EnumType.STRING)
+	private EstadoPedido estado;
 
 	
-	public boolean isRecebido() {
-		return recebido;
+	
+
+	public EstadoPedido getEstado() {
+		return estado;
 	}
 
-	public void setRecebido(boolean recebido) {
-		this.recebido = recebido;
+	public void setEstado(EstadoPedido estado) {
+		this.estado = estado;
 	}
 
 	public Loja getLoja() {

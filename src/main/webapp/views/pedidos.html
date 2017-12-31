@@ -34,7 +34,11 @@
 						<input class="form-control" ng-model="obsSearch" type="text" name="" placeholder="Observações" size="12">
 					</th>
 					<th>
-						rebcebido
+						<select ng-model="estadoSearch" class="form-control">
+							<option value="NAO_RECEBIDO">Em Espera</option>
+							<option value="RECEBIDO">Recebido</option>
+							<option value="RECEBIDO_PARCIALMENTE">Parcialmente Recebido</option>
+						</select>
 					</th>
 				</tr>	
 			</thead>
@@ -66,7 +70,7 @@
 			
 			<tbody>
 				
-				<tr dir-paginate="pedido in pedidos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch} | itemsPerPage:20">
+				<tr dir-paginate="pedido in pedidos | orderBy:sortKey:reverse | estadoFilter: estadoSearch | marcaFilter: marcaSearch | lojaFilter: lojaSearch | dateFilter:dateFrom:dateEnd | filter: {id: idSearch, valorTotal: valorTotalSearch, observacoes: obsSearch} | itemsPerPage:20">
 					<td><a href="#!visualizaPedido/{{pedido.id}}">{{pedido.id}}</a></td>
 					<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
 					<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
@@ -75,14 +79,17 @@
 					<td>{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100)}}</td>
 					<td>{{pedido.observacoes}}</td>
 					<td>
-						<img src="utils/checkIcon.svg" ng-show="pedido.recebido" width="14" height="15">
+						<img src="utils/delivery.svg" ng-show="pedido.estado == 'RECEBIDO'" width="16" height="17">
+						</img>
+						<img src="utils/delivery-2.svg" ng-show="pedido.estado == 'RECEBIDO_PARCIALMENTE'" width="16" height="17">
+						</img>
+						<img src="utils/delivery-3.svg" ng-show="pedido.estado == 'NAO_RECEBIDO'" width="16" height="17">
 						</img>
 					</td>
 				</tr>
 				
 			</tbody>
 		</table>
-	</div>
 		<div class="row">
 			
 				<dir-pagination-controls
@@ -94,5 +101,5 @@
 		       	>
 		    	</dir-pagination-controls>
 		</div>
-
+	</div>
 </div>

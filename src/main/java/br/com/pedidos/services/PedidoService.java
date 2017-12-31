@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.pedidos.model.EstadoPedido;
 import br.com.pedidos.model.Pedido;
 import br.com.pedidos.model.Produto;
 import br.com.pedidos.repository.PedidoRepository;
@@ -16,6 +17,9 @@ public class PedidoService {
 	PedidoRepository pedidoRepository;
 	
 	public Pedido salvarPedido (Pedido pedido) {
+		
+		pedido.setEstado(EstadoPedido.NAO_RECEBIDO);
+		
 		pedidoRepository.save(pedido);
 		
 		return pedido;
@@ -31,16 +35,24 @@ public class PedidoService {
 	
 	public Pedido atualizarPedido (Pedido pedido) {
 		
-		boolean recebido = true;
+		boolean todosRecebidos = true;
+		boolean peloMenosUmRecebido = false;
 		
 		for (Produto produto : pedido.getProdutos()) {
+			if (produto.isRecebido() && !peloMenosUmRecebido) {
+				peloMenosUmRecebido = true;
+			}
 			if (!produto.isRecebido()) {
-				recebido = false;
-				break;
+				todosRecebidos = false;
 			}
 		}
 		
-		pedido.setRecebido(recebido);
+		if (todosRecebidos) {
+			pedido.setEstado(EstadoPedido.RECEBIDO);
+		} else if (peloMenosUmRecebido) {
+			pedido.setEstado(EstadoPedido.RECEBIDO_PARCIALMENTE);
+		}
+		
 		
 		this.pedidoRepository.save(pedido);
 		
