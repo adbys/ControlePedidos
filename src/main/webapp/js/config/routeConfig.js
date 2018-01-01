@@ -123,6 +123,18 @@ app.config(function ($stateProvider){
                 return pedidoService.buscarPedidoPorId($stateParams.pedidoId);
             }
         }
+    }).state("formaDePagamento", {
+        url: "/formaDePagamento",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/formaDePagamento.html",
+                controller: "formaDePagamentoCtrl"
+                
+            }
+        }
     });
 
 });
