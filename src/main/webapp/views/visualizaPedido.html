@@ -32,6 +32,11 @@
 					<p class="dadoPedido">{{pedido.valorTotal - (pedido.valorTotal * pedido.desconto / 100) | currency}}</p>
 				</div>
 				<div>
+				<div>
+					<label class="field" >Forma de Pagamento: </label>
+					<p class="dadoPedido">{{pedido.formaDePagamento.nome}}</p>
+				</div>
+				<div>
 					<label class="field">Observações: </label>
 					<p class="dadoPedido">{{pedido.observacoes}}</p>
 				</div>

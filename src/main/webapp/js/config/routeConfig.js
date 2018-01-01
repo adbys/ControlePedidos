@@ -54,6 +54,9 @@ app.config(function ($stateProvider){
             },
             categorias: function(categoriaService) {
                 return categoriaService.carregarCategorias();
+            },
+            formasDePagamento: function(formaDePagamentoService) {
+                return formaDePagamentoService.carregarFormasDePagamento();
             }
         }
     })

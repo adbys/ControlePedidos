@@ -1,6 +1,5 @@
 package br.com.pedidos.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +12,9 @@ import br.com.pedidos.model.Marca;
 import br.com.pedidos.services.MarcaService;
 
 
-
-
-
 @RestController
 @RequestMapping(value="/marca")
 public class MarcaController {
-	
-private List<Marca> marcas = new ArrayList<Marca>();
 
 	@Autowired
 	MarcaService marcaService;

@@ -25,6 +25,8 @@ public class Pedido {
 	private String observacoes;
 	private double valorTotal;
 	private int desconto;
+	@OneToOne
+	private FormaDePagamento formaDePagamento;
 	@ElementCollection
 	@OrderColumn
 	private Collection<Produto> produtos;
@@ -36,9 +38,6 @@ public class Pedido {
 	private Marca marca;
 	@Enumerated(EnumType.STRING)
 	private EstadoPedido estado;
-
-	
-	
 
 	public EstadoPedido getEstado() {
 		return estado;
@@ -123,6 +122,14 @@ public class Pedido {
 	
 	public void setProdutos(Collection<Produto> produtos) {
 		this.produtos = produtos;
+	}
+	
+	public FormaDePagamento getFormaDePagamento() {
+		return formaDePagamento;
+	}
+
+	public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+		this.formaDePagamento = formaDePagamento;
 	}
 	
 }

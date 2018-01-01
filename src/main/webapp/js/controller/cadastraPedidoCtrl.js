@@ -1,8 +1,9 @@
-app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias){
+app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento){
 
 	$scope.lojas = lojas.data;
 	$scope.marcas = marcas.data;
 	$scope.categorias = categorias.data;
+	$scope.formasDePagamento = formasDePagamento.data;
 
 
 	$scope.produtos = [{
