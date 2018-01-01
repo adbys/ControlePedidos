@@ -2,7 +2,7 @@ app.controller("formaDePagamentoCtrl", function($scope, toastr, $location, forma
 
 	$scope.salvarFormaDePagamento = function (formaDePagamento) {
 		console.log(">>>>");
-		console.log($scope.formaDePagamento);
+		console.log($scope.tags);
 	//	formaDePagamentoService.salvarFormaDePagamento(formaDePagamento).then(function successCallback(response) {
 	//	    console.log(response);
 	//	    $location.path("/index");

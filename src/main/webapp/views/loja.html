@@ -2,16 +2,13 @@
 
 	<h1>Cadastro de Loja</h1>
 	<br>
-	<fieldset>
-		<form ng-submit="salvarLoja(loja)">
-			<div class="container">
-				<div class="form-group">	
-					<label class="field" for="loja">Loja</label>
-					<input ng-model="loja.nome" class="textbox-300 form-control" type="text" name="loja" id="loja" placeholder="Digite o nome da loja" required autofocus>
-				</div>
+	<form ng-submit="salvarLoja(loja)">
+		<fieldset>
+			<div class="form-group">	
+				<label>Loja</label>
+				<input ng-model="loja.nome" class="margin-top-bottom form-control" type="text" name="loja" id="loja" placeholder="Digite o nome da loja" required autofocus>
 			</div>
-
 			<button type="submit" class="btn btn-primary">Salvar</button>	
-		</form>
-	</fieldset>
+		</fieldset>
+	</form>
 </div>

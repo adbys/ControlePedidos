@@ -1,25 +1,18 @@
 <div class="container text-center">
 
-	<h1>Forma de Pagamento</h1>
+	<h1> Cadastro de Forma de Pagamento</h1>
 	<br>
-	<fieldset>
-		<form>
-			<div class="container">
-				<div class="form-group">	
-					<label class="field" for="formaDePagamento">Forma de Pagamento</label>
-					<input ng-model="formaDePagamento" data-role="tagsinput" class="textbox-300 form-control" type="text" name="formaDePagamento" placeholder="Digite o nome da categoria" required autofocus>
-				</div>
+
+	<form ng-submit="salvarFormaDePagamento(tags)">
+		<fieldset>
+			<div class="form-group">
+				<label>Forma de Pagamento</label>
+				<tags-input min-length="1" ng-model="tags" placeholder="Adicione o tempo das parcelas">
+        		</tags-input>
 			</div>
-			<form name="fruitForm">
-      <md-chips ng-model="ctrl.roFruitNames" name="fruitName" readonly="ctrl.readonly"
-                md-removable="ctrl.removable" md-max-chips="5" placeholder="Enter a fruit...">
-        <md-chip-template>
-          <strong>{{$chip}}</strong>
-          <em>(fruit)</em>
-        </md-chip-template>
-      </md-chips>
-			<button ng-click="salvarFormaDePagamento(formaDePagamento)" class="btn btn-primary">Salvar</button>
-		</form>
-	</fieldset>
+			<button class="btn btn-primary">Salvar</button>
+		</fieldset>
+	</form>
+	
 
 </div>

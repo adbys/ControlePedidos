@@ -2,16 +2,14 @@
 
 	<h1>Cadastro de Categoria</h1>
 	<br>
-	<fieldset>
-		<form ng-submit="salvarCategoria(categoria)">
-			<div class="container">
+	<form ng-submit="salvarCategoria(categoria)">
+		<fieldset>
 				<div class="form-group">	
-					<label class="field" for="categoria">Categoria</label>
-					<input ng-model="categoria.nome" class="textbox-300 form-control" type="text" name="categoria" id="categoria" placeholder="Digite o nome da categoria" required autofocus>
+					<label>Categoria</label>
+					<input ng-model="categoria.nome" class="margin-top-bottom form-control" type="text" name="categoria" id="categoria" placeholder="Digite o nome da categoria" required autofocus>
 				</div>
-			</div>
 			<button class="btn btn-primary">Salvar</button>
-		</form>
-	</fieldset>
+		</fieldset>
+	</form>
 
 </div>

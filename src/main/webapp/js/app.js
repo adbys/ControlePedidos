@@ -1,1 +1,1 @@
-const app = angular.module("controlePedidos",['toastr', 'ui.router', 'angularUtils.directives.dirPagination']);
+const app = angular.module("controlePedidos",['toastr', 'ui.router', 'angularUtils.directives.dirPagination', 'ngTagsInput']);
