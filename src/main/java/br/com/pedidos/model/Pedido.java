@@ -26,6 +26,7 @@ public class Pedido {
 	private double valorTotal;
 	private int desconto;
 	@OneToOne
+	@JoinColumn(name = "forma_pagamento_id")
 	private FormaDePagamento formaDePagamento;
 	@ElementCollection
 	@OrderColumn

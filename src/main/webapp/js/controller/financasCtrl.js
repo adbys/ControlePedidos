@@ -1,18 +1,5 @@
-app.controller("financasCtrl", function($scope){
+app.controller("financasCtrl", function($scope, meses){
 
-	$scope.meses = [
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 },
-			{ nome: "Janeiro", valorDosPedidos: 0, valorAPagar: 10 }
-	];
+	$scope.meses = meses.data;
 
 });

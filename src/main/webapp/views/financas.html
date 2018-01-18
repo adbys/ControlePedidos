@@ -7,19 +7,29 @@
 		<thead>
 			<tr>
 				<th class="text-center">Mês</th>
-				<th class="text-center">Valor dos Pedidos</th>
+				<th class="text-center">Ano</th>
 				<th class="text-center">Valor a Pagar</th>
 			</tr>
 			
 		</thead>
 		<tbody>
 			
-			<tr ng-repeat="mes in meses">
-				<td>{{mes.nome}}</td>
-				<td>{{mes.valorDosPedidos}}</td>
-				<td>{{mes.valorAPagar}}</td>
+			<tr dir-paginate="mes in meses | itemsPerPage:12">
+				<td>{{mes.mes}}</td>
+				<td>{{mes.ano}}</td>
+				<td>{{mes.valorTotal}}</td>
 			</tr>
-			
 		</tbody>
 	</table>
+	<div class="row">
+			
+				<dir-pagination-controls
+		       		max-size="5"
+		       		direction-links="true"
+		       		boundary-links="true"
+		       		auto-hide="false"
+		       		clear-button="false"
+		       	>
+		    	</dir-pagination-controls>
+		</div>
 </div>

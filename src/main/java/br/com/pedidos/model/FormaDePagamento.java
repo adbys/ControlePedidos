@@ -1,6 +1,6 @@
 package br.com.pedidos.model;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class FormaDePagamento {
 	private String nome;
 	@ElementCollection
 	@OrderColumn
-	private Collection<String> parcelas;
+	private List<String> parcelas;
 	
 	public long getId() {
 		return id;
@@ -25,10 +25,10 @@ public class FormaDePagamento {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Collection<String> getParcelas() {
+	public List<String> getParcelas() {
 		return parcelas;
 	}
-	public void setParcelas(Collection<String> parcelas) {
+	public void setParcelas(List<String> parcelas) {
 		this.parcelas = parcelas;
 	}
 	public String getNome() {

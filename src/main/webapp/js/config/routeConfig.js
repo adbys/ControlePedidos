@@ -107,6 +107,11 @@ app.config(function ($stateProvider){
                 controller: "financasCtrl"
                 
             }
+        },
+        resolve: {
+            meses: function(financeiroService) {
+                return financeiroService.carregarMeses();
+            }
         }
     }).state("visualizaPedido", {
         url: "/visualizaPedido/:pedidoId",
@@ -122,7 +127,6 @@ app.config(function ($stateProvider){
         },
         resolve: {
             pedido: function(pedidoService, $stateParams) {
-                console.log()
                 return pedidoService.buscarPedidoPorId($stateParams.pedidoId);
             }
         }
