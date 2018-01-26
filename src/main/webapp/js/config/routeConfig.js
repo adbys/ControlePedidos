@@ -1,7 +1,7 @@
 app.config(function ($stateProvider){
 	$stateProvider
     .state("login", {
-        url: "",
+        url: "/login",
         views: {
             'body': {
                 templateUrl : "views/login.html",

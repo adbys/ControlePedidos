@@ -18,7 +18,7 @@ import javax.persistence.OrderColumn;
 public class Pedido {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	private String dataPedido;
 	private String dataRecebimento;

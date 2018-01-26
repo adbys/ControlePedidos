@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="row">
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default" ng-controller="navBarCtrl">
 			<div>
 			    <div class="navbar-header logo">
 			      <img src="utils/aluisiofashion-logo.png" width="90" height="50">
@@ -22,6 +22,9 @@
 			    	</li>
 			    	<li><a href="#!financas">Finanças</a></li>
 			    </ul>
+				<ul class="nav navbar-nav navbar-right">
+            		<li><a ng-click="logout()" href="">Sair</a></li>
+          		</ul>
 			</div>
 		</nav>
 	</div>

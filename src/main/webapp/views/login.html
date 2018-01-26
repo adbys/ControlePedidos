@@ -14,9 +14,9 @@
         <section class="login-form">
           <form role="login">
             <img src="utils/aluisiofashion-logo.png" class="img-responsive" alt="" />
-            <input name="usuario" ng-model="usuario" placeholder="Usuário" required class="form-control input-lg" />
+            <input name="usuario" ng-model="usuario.login" placeholder="Usuário" required class="form-control input-lg" />
             
-            <input type="password" ng-model="senha" class="form-control input-lg" id="password" placeholder="Senha" required="" />
+            <input type="password" ng-model="usuario.senha" class="form-control input-lg" id="password" placeholder="Senha" required="" />
             
             <button ng-click="doLogin()" class="btn btn-lg btn-primary btn-block">Entrar</button>
             

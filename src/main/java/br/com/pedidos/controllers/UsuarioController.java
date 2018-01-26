@@ -1,12 +1,12 @@
 package br.com.pedidos.controllers;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pedidos.model.Pedido;
 import br.com.pedidos.model.Usuario;
 import br.com.pedidos.services.UsuarioService;
 
@@ -18,27 +18,16 @@ public class UsuarioController {
 	UsuarioService usuarioService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Long salveUsuario (@RequestBody Usuario usuario) {
+	public String salveUsuario (@RequestBody Usuario usuario) {
 		
-		//TODO: criptografar senha antes de salvar usuário
+		String senha = usuario.getSenha();
+		String senhaCriptografada = BCrypt.hashpw(senha, BCrypt.gensalt());
+		
+		usuario.setSenha(senhaCriptografada);
 		
 		usuarioService.salvarUsuario(usuario);
 		
-		return usuario.getId();
+		return usuario.getLogin();
 	}
-	
-	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public Usuario getUsuario (@RequestBody Usuario usuario) { 
-		
-		//TODO: Autenticar e gerar token
-		
-		Usuario usuarioFound = usuarioService.buscarUsuario(usuario.getLogin());
-		
-		return usuarioFound;	
-		
-		
-	}
-	
-	
 
 }
