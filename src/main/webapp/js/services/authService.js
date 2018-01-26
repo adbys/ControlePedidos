@@ -1,15 +1,19 @@
 app.factory("authService", function ($injector, $cookies) {
 
 	var _isTokenValid = function() {
-		if ($cookies.get('token') != null) {
-			return true;
-		} else {
-			return false;
-		}
+		var http = $injector.get('$http');
+		var token = {'token': _getToken()};
+		JSON.stringify(token);
+		console.log("valido");
+		return http.post('/auth/checkToken', token);
 	};
 
 	var _setToken = function (token) {
 		$cookies.put('token', token);
+	};
+
+	var _getToken = function (token) {
+		return $cookies.get('token');
 	};
 
 	var _signin = function (data) {
@@ -31,6 +35,7 @@ app.factory("authService", function ($injector, $cookies) {
 	return {
 		isTokenValid : _isTokenValid,
 		setToken : _setToken,
+		getToken: _getToken,
 		signin : _signin,
 		logout : _logout,
 		clearToken: _clearToken

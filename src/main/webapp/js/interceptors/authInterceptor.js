@@ -3,15 +3,23 @@ app.factory("authInterceptor", function ($state, authService) {
 		request: function (config) {
 			console.log(config.url);
 
-			if (config.url == "views/login.html"  && authService.isTokenValid()) {
-				$state.go('index');
+			if (config.url == '/auth/signin' || config.url == '/auth/checkToken') {
+				return config;
 			}
-			if (!authService.isTokenValid()) {
-				$state.go('login');
-			} 
-			if (config.url == '/auth/signin') {
 
+			if(authService.getToken() != null) {
+				authService.isTokenValid().then(function(success) {
+					if (config.url == 'views/login.html') {
+						$state.go('index');
+					}
+					
+				}, function (error) {
+					$state.go('login');
+				});
+			} else {
+				$state.go('login');
 			}
+
 			return config;
 		}
 	};

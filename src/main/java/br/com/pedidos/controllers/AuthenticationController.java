@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,12 +63,14 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(value="/checkToken", method= RequestMethod.POST)
-	public Boolean checkToken(@RequestBody ClientSession clientSession) {
+	public ResponseEntity checkToken(@RequestBody ClientSession clientSession) {
+		System.out.println(clientSession.getToken());
 		ClientSession cs = clientSessionService.buscarClientSession(clientSession.getToken());
+		System.out.println(cs == null);
 		if(cs != null) {
-			return true;
+			return new ResponseEntity(HttpStatus.ACCEPTED);
 		} else {
-			return false;
+			return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
 

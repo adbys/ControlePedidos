@@ -12,7 +12,7 @@ header {
 	margin:0;
 }
 
-header .container {
+.container {
 	width: 100%;
 }
 
@@ -68,16 +68,16 @@ fieldset div {
 
 input.textbox-300 {
 	border-radius: 4px;
-	width: 300px;
+	width: 30%;
 }
 
 select.selectbox-300 {
-	width: 300px;
+	width: 30%;
 }
 
 textarea.textarea-300 {
 	border-radius: 4px;
-	width: 300px;
+	width: 30%;
 	height: 100px;
 }
 
