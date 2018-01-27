@@ -1,5 +1,10 @@
 package br.com.pedidos.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -52,12 +57,24 @@ public class MesFinanceiro implements Comparable {
 	public int compareTo(Object o) {
 		MesFinanceiro outroMes = (MesFinanceiro) o;
 		
-		if(this.ano.compareTo(outroMes.getAno()) == 0) {
-			return this.mes.compareTo(outroMes.getMes());
-		} else {
-			return this.ano.compareTo(outroMes.getAno());
+		Locale ptBR = new Locale("pt", "BR");
+		
+		String mesAtual = this.getMes().toUpperCase() + "-" + this.getAno();
+		String mesComparado = outroMes.getMes() + "-" + outroMes.getAno();
+		
+		Date dateMesAtual = new Date();
+		Date dateMesComparado = new Date();
+		
+		try {
+			dateMesAtual = new SimpleDateFormat("MMM-yyyy", ptBR).parse(mesAtual);
+			dateMesComparado = new SimpleDateFormat("MMM-yyyy", ptBR).parse(mesComparado);
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 		
+		//Ordenando em ordem crescente;
+		return dateMesComparado.compareTo(dateMesAtual);
+				
 	}
 	
 	
