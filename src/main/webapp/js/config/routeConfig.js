@@ -8,7 +8,6 @@ app.config(function ($stateProvider){
                 controller: "loginCtrl"        
             }
         }
-        
     })
     .state("index", {
         url: "/index",
@@ -156,6 +155,35 @@ app.config(function ($stateProvider){
         resolve: {
             mes: function(financeiroService, $stateParams) {
                 return financeiroService.getMes($stateParams.mesId);
+            }
+        }
+    }).state("editarPedido", {
+        url: "/editarPedido/:pedidoId",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/editaPedido.html",
+                controller: "editarPedidoCtrl"
+                
+            }
+        },
+        resolve: {
+            lojas: function(lojaService) {
+                return lojaService.carregarLojas();
+            },
+            marcas: function(marcaService) {
+                return marcaService.carregarMarcas();
+            },
+            categorias: function(categoriaService) {
+                return categoriaService.carregarCategorias();
+            },
+            formasDePagamento: function(formaDePagamentoService) {
+                return formaDePagamentoService.carregarFormasDePagamento();
+            },
+            pedido: function(pedidoService, $stateParams) {
+                return pedidoService.buscarPedidoPorId($stateParams.pedidoId);
             }
         }
     });

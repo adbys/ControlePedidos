@@ -1,8 +1,9 @@
-app.controller("mesDetalhesCtrl", function($scope, $location, mes) {
+app.controller("mesDetalhesCtrl", function($scope, $state, mes) {
 
 	$scope.mes = mes.data;
 
-	console.log($scope.mes);
-
+	$scope.voltar = function () {
+		$state.go("financas");
+	} 
 
 });

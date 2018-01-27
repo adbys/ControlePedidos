@@ -36,6 +36,11 @@ public class PedidoController {
 	@RequestMapping(method = RequestMethod.POST)
 	public long salvePedido (@RequestBody Pedido pedido) {
 		
+		if (pedido.getId() != null) {
+			pedidoService.salvarPedido(pedido);
+			return pedido.getId();
+		}
+		
 		pedidoService.salvarPedido(pedido);
 
 		FormaDePagamento formaPagamento = pedido.getFormaDePagamento();

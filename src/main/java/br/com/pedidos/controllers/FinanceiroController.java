@@ -27,7 +27,6 @@ public class FinanceiroController {
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public MesFinanceiro getPedidosPorId (@PathVariable long id) {
-		System.out.println(">>>>>>>>>>>>>");
 		return this.financeiroService.buscarPorId(id);
 	}
 

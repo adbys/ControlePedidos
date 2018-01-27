@@ -20,11 +20,11 @@ app.factory("pedidoService", function ($http) {
 
 	var _buscarPedidoPorId = function (id) {
 		return $http.get("/pedidos/" + id);
-	}
+	};
 
 	var _atualizarPedido = function (pedido) {
 		return $http.put("/pedidos", pedido);
-	}
+	};
 
 
 	return {
