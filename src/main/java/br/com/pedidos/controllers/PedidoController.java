@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,8 @@ public class PedidoController {
 		
 		FormaDePagamento formaPagamento = pedido.getFormaDePagamento();
 		List<String> parcelas = formaPagamento.getParcelas();
-		System.out.println(parcelas);
 		double valorParcela = pedido.getValorTotal() / parcelas.size();
-		TimeZone tz = TimeZone.getTimeZone("UTC");
+		TimeZone tz = TimeZone.getTimeZone("America/Fortaleza");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		df.setTimeZone(tz);
 		Date data = null;
@@ -56,7 +56,8 @@ public class PedidoController {
 			c.setTime(data);
 			c.add(Calendar.DATE, Integer.parseInt(dataParcela)); 
 			
-			Formatter fmt = new Formatter();
+			Locale ptBR = new Locale("pt", "BR");
+			Formatter fmt = new Formatter(ptBR);
 			fmt.format("%tB", c.getTime());
 			int anoInt = c.getTime().getYear() + 1900;
 			String ano = String.valueOf(anoInt);

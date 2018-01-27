@@ -34,9 +34,6 @@ public class AuthenticationController {
 		
 		Usuario usuarioFound = usuarioService.buscarUsuario(usuario.getLogin());
 		
-		System.out.println(usuarioFound.getLogin());
-		
-		
 		if (usuarioFound == null) {
 			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
 			return null;
