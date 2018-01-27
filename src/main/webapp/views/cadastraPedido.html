@@ -24,7 +24,8 @@
 				</div>
 				<div class="form-group">
 					<label class="field" for="formaDePagamento">Forma de Pagamento</label>
-					<select ng-model="pedido.formaDePagamento" ng-options="formaDePagamento as formaDePagamento.nome for formaDePagamento in formasDePagamento" class="selectbox-300 form-control" name="formaDePagamento">
+					<select ng-model="pedido.formaDePagamento" ng-options="formaDePagamento as formaDePagamento.nome for formaDePagamento in formasDePagamento" required="" class="selectbox-300 form-control" name="formaDePagamento">
+						<option></option>
 					</select>
 				</div>
 				<div class="form-group">

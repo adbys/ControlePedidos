@@ -1,7 +1,6 @@
 app.factory("authInterceptor", function ($state, authService) {
 	return {
 		request: function (config) {
-			console.log(config.url);
 
 			if (config.url == '/auth/signin' || config.url == '/auth/checkToken') {
 				return config;
