@@ -14,6 +14,7 @@ app.factory("authInterceptor", function ($state, authService) {
 					}
 					
 				}, function (error) {
+					authService.clearToken();
 					$state.go('login');
 				});
 			} else {

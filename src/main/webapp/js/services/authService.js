@@ -4,7 +4,6 @@ app.factory("authService", function ($injector, $cookies) {
 		var http = $injector.get('$http');
 		var token = {'token': _getToken()};
 		JSON.stringify(token);
-		console.log("valido");
 		return http.post('/auth/checkToken', token);
 	};
 
@@ -18,7 +17,6 @@ app.factory("authService", function ($injector, $cookies) {
 
 	var _signin = function (data) {
 		var http = $injector.get('$http');
-		console.log("sigin");
 		return http.post('/auth/signin', data);
 	};
 

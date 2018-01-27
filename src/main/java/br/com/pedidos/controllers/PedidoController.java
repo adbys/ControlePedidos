@@ -48,7 +48,6 @@ public class PedidoController {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		System.out.println(data);
 
 		for (String dataParcela : parcelas) {
 			
@@ -66,7 +65,6 @@ public class PedidoController {
 			if (mes != null) {
 				mes.setValorTotal(mes.getValorTotal() + valorParcela);
 			} else {
-				System.out.println("null");
 				MesFinanceiro mesParcela = new MesFinanceiro(fmt.toString(), ano, valorParcela);
 				financeiroService.salvarMes(mesParcela);
 			}

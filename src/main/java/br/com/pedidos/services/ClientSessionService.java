@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.pedidos.model.ClientSession;
+import br.com.pedidos.model.Usuario;
 import br.com.pedidos.repository.ClientSessionRepository;
 
 @Service
@@ -27,6 +28,10 @@ public class ClientSessionService {
 		ClientSession clientSession = this.clientSessionRepository.findByToken(token);
 		
 		clientSessionRepository.delete(clientSession);
+	}
+	
+	public ClientSession buscarPorUsuario(Usuario usuario) {
+		return clientSessionRepository.findByUsuario(usuario);
 	}
 
 }
