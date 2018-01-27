@@ -36,9 +36,10 @@ public class PedidoController {
 	@RequestMapping(method = RequestMethod.POST)
 	public long salvePedido (@RequestBody Pedido pedido) {
 		
+		pedidoService.salvarPedido(pedido);
+
 		FormaDePagamento formaPagamento = pedido.getFormaDePagamento();
 		List<String> parcelas = formaPagamento.getParcelas();
-		double valorParcela = pedido.getValorTotal() / parcelas.size();
 		TimeZone tz = TimeZone.getTimeZone("America/Fortaleza");
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 		df.setTimeZone(tz);
@@ -63,15 +64,16 @@ public class PedidoController {
 			MesFinanceiro mes = financeiroService.buscarMesEAno(fmt.toString(), ano);
 			
 			if (mes != null) {
-				mes.setValorTotal(mes.getValorTotal() + valorParcela);
+				mes.adicionarPedido(pedido);
+				financeiroService.salvarMes(mes);
 			} else {
-				MesFinanceiro mesParcela = new MesFinanceiro(fmt.toString(), ano, valorParcela);
+				MesFinanceiro mesParcela = new MesFinanceiro(fmt.toString(), ano);
+				mesParcela.adicionarPedido(pedido);
 				financeiroService.salvarMes(mesParcela);
 			}
 			
 		}
 		
-		pedidoService.salvarPedido(pedido);
 		
 		return pedido.getId();
 	}

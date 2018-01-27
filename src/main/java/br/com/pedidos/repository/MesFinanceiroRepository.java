@@ -7,5 +7,7 @@ import br.com.pedidos.model.MesFinanceiro;
 public interface MesFinanceiroRepository extends JpaRepository<MesFinanceiro, Long> {
 
 	public MesFinanceiro findByMesAndAno(String mes, String ano);
+
+	public MesFinanceiro findById(long id);
 	
 }

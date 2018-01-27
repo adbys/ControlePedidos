@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.pedidos.model.MesFinanceiro;
+import br.com.pedidos.model.Pedido;
 import br.com.pedidos.repository.MesFinanceiroRepository;
 
 @Service
@@ -31,6 +32,10 @@ public class MesFinanceiroService {
 	
 	public MesFinanceiro buscarMesEAno (String mes, String ano) {
 		return mesFinanceiroRepository.findByMesAndAno(mes, ano);
+	}
+
+	public MesFinanceiro buscarPorId(long id) {
+		return mesFinanceiroRepository.findById(id);
 	}
 	
 	

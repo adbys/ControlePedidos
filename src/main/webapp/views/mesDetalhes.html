@@ -1,0 +1,21 @@
+<div class="container text-center">
+
+	<h1>{{mes.mes}} - {{mes.ano}}</h1>
+	<br>
+	<br>			
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th class="text-center">Loja</th>
+				<th class="text-center">Valor Pedidos</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr ng-repeat="loja in mes.valorTotalPorLoja">
+				<td>{{loja.loja}}</td>
+				<td>{{loja.valor | currency}}</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+</div>

@@ -105,7 +105,6 @@ app.config(function ($stateProvider){
             'body': {
                 templateUrl : "views/financas.html",
                 controller: "financasCtrl"
-                
             }
         },
         resolve: {
@@ -140,6 +139,23 @@ app.config(function ($stateProvider){
                 templateUrl : "views/formaDePagamento.html",
                 controller: "formaDePagamentoCtrl"
                 
+            }
+        }
+    }).state("visualizaMes", {
+        url: "/financeiro/:mesId",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/mesDetalhes.html",
+                controller: "mesDetalhesCtrl"
+                
+            }
+        },
+        resolve: {
+            mes: function(financeiroService, $stateParams) {
+                return financeiroService.getMes($stateParams.mesId);
             }
         }
     });

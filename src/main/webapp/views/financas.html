@@ -15,21 +15,20 @@
 		<tbody>
 			
 			<tr dir-paginate="mes in meses | itemsPerPage:12">
-				<td>{{mes.mes}}</td>
+				<td> <a href="#!financeiro/{{mes.id}}">{{mes.mes}}</a></td>
 				<td>{{mes.ano}}</td>
-				<td>{{mes.valorTotal}}</td>
+				<td>{{mes.valorTotal | currency}}</td>
 			</tr>
 		</tbody>
 	</table>
 	<div class="row">
-			
-				<dir-pagination-controls
-		       		max-size="5"
-		       		direction-links="true"
-		       		boundary-links="true"
-		       		auto-hide="false"
-		       		clear-button="false"
-		       	>
-		    	</dir-pagination-controls>
-		</div>
+		<dir-pagination-controls
+       		max-size="5"
+       		direction-links="true"
+       		boundary-links="true"
+       		auto-hide="false"
+       		clear-button="false"
+       	>
+    	</dir-pagination-controls>
+	</div>
 </div>
