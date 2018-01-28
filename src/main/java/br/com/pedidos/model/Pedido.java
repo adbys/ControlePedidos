@@ -2,7 +2,6 @@ package br.com.pedidos.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -12,8 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderColumn;
 
@@ -43,7 +40,7 @@ public class Pedido {
 	@Enumerated(EnumType.STRING)
 	private EstadoPedido estado;
 
-
+	
 	public EstadoPedido getEstado() {
 		return estado;
 	}

@@ -1,6 +1,7 @@
 app.factory("pedidoService", function ($http) {
 
 	var _cadastraPedido = function (pedido, produtos) {
+		console.log(pedido);
 		var valorTotal = 0;
 
 		pedido.produtos = produtos

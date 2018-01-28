@@ -1,9 +1,10 @@
-app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento){
+app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento, generos){
 
 	$scope.lojas = lojas.data;
 	$scope.marcas = marcas.data;
 	$scope.categorias = categorias.data;
 	$scope.formasDePagamento = formasDePagamento.data;
+	$scope.generos = generos.data;
 
 
 	$scope.produtos = [{
@@ -16,6 +17,7 @@ app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoS
 	}];
 
 	$scope.salvarPedido = function (pedido) {
+		console.log(pedido);
 		pedidoService.cadastraPedido(pedido, $scope.produtos).then(function successCallback(response) {
 		    console.log(response.data);
 		    $location.path("/index");

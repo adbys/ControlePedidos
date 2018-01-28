@@ -1,9 +1,10 @@
-app.controller("editarPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento, pedido){
+app.controller("editarPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento, generos,pedido){
 
 	$scope.lojas = lojas.data;
 	$scope.marcas = marcas.data;
 	$scope.categorias = categorias.data;
 	$scope.formasDePagamento = formasDePagamento.data;
+	$scope.generos = generos.data;
 	
 	loadPedido();
 	loadDatas();
@@ -11,6 +12,7 @@ app.controller("editarPedidoCtrl", function($scope, toastr, $location, pedidoSer
 	loadFormaDePagamento();
 	loadLoja();
 	loadCategoriaProdutos();
+
 
 	function loadPedido() {
 		$scope.pedido = pedido.data;
@@ -52,7 +54,7 @@ app.controller("editarPedidoCtrl", function($scope, toastr, $location, pedidoSer
 		for(i = 0; i < $scope.pedido.produtos.length; i++) {
 			console.log(pedido.data.produtos[i]);
 			for(j = 0; j < $scope.categorias.length; j++) {
-				if($scope.pedido.produtos[i].categoria.id == $scope.categorias[j].id) {
+				if($scope.pedido.produtos[i].categoria == $scope.categorias[j]) {
 					$scope.pedido.produtos[i].categoria = $scope.categorias[j];
 				}
 

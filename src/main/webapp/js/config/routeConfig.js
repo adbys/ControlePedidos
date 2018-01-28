@@ -56,6 +56,9 @@ app.config(function ($stateProvider){
             },
             formasDePagamento: function(formaDePagamentoService) {
                 return formaDePagamentoService.carregarFormasDePagamento();
+            },
+            generos: function(generoService) {
+                return generoService.carregarGeneros();
             }
         }
     })
@@ -184,6 +187,9 @@ app.config(function ($stateProvider){
             },
             pedido: function(pedidoService, $stateParams) {
                 return pedidoService.buscarPedidoPorId($stateParams.pedidoId);
+            },
+            generos: function(generoService) {
+                return generoService.carregarGeneros();
             }
         }
     });

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pedidos.model.Categoria;
+import br.com.pedidos.model.CategoriaProdutos;
 import br.com.pedidos.services.CategoriaService;
 
 @RestController
@@ -20,9 +21,17 @@ public class CategoriaController {
 	CategoriaService categoriaService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Categoria> getCategorias () {
+	public List<CategoriaProdutos> getCategorias () {
+		
+		List<CategoriaProdutos> categorias = new ArrayList<CategoriaProdutos>();
+		categorias.add(CategoriaProdutos.ACESSORIO);
+		categorias.add(CategoriaProdutos.CALCADO);
+		categorias.add(CategoriaProdutos.VESTUARIO);
+		
+		
+		return categorias;
 
-		return categoriaService.buscarTodas();
+		//return categoriaService.buscarTodas();
 		
 	}
 	
