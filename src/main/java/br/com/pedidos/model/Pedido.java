@@ -106,6 +106,10 @@ public class Pedido {
 		return this.valorTotal;
 	}
 	
+	public double getValorTotalComDesconto() {
+		return (this.valorTotal - this.valorTotal * (this.getDesconto() / 100));
+	}
+	
 	public void setValorTotal (double valorTotal) {
 		this.valorTotal = valorTotal;
 	}

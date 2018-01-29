@@ -6,9 +6,10 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th class="text-center">Mês</th>
-				<th class="text-center">Ano</th>
-				<th class="text-center">Valor a Pagar</th>
+				<th class="text-center" style="width:40%;">Mês</th>
+				<th class="text-center" style="width:10%;">Ano</th>
+				<th class="text-center" style="width:25%;">Valor com Desconto</th>
+				<th class="text-center" style="width:25%;">Valor Total</th>
 			</tr>
 			
 		</thead>
@@ -17,6 +18,7 @@
 			<tr dir-paginate="mes in meses | itemsPerPage:12">
 				<td> <a href="#!financeiro/{{mes.id}}">{{mes.mes}}</a></td>
 				<td>{{mes.ano}}</td>
+				<td>{{mes.valorTotalComDesconto | currency}}</td>
 				<td>{{mes.valorTotal | currency}}</td>
 			</tr>
 		</tbody>

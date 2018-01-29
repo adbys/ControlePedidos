@@ -192,6 +192,20 @@ app.config(function ($stateProvider){
                 return generoService.carregarGeneros();
             }
         }
+    }).state("inventario", {
+        url: "/inventario",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/inventario.html",
+                controller: "inventarioCtrl"
+                
+            }
+        },
+        resolve: {
+        }
     });
 
 });

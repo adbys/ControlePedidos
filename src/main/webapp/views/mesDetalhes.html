@@ -6,14 +6,16 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th class="text-center">Loja</th>
-				<th class="text-center">Valor Pedidos</th>
+				<th class="text-center" style="width:40%;">Loja</th>
+				<th class="text-center" style="width:30%;">Valor com Desconto</th>
+				<th class="text-center" style="width:30%;">Valor Total</th>
 			</tr>	
 		</thead>
 		<tbody>
 			<tr ng-repeat="loja in mes.valorTotalPorLoja">
 				<td>{{loja.loja}}</td>
-				<td>{{loja.valor | currency}}</td>
+				<td>{{mes.valorTotalComDesconto | currency}}</td>
+				<td>{{mes.valorTotal | currency}}</td>
 			</tr>
 		</tbody>
 	</table>

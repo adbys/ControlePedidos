@@ -77,23 +77,42 @@ public class MesFinanceiro implements Comparable {
 		return valorTotal;
 	}
 	
+	public double getValorTotalComDesconto() {
+		
+		double valorTotal = 0;
+		
+		for (Pedido pedido : pedidos) {
+			valorTotal += ((pedido.getValorTotal() - pedido.getValorTotal() * (pedido.getDesconto() / 100)) / pedido.getFormaDePagamento().getParcelas().size());
+		}
+		
+		return valorTotal;
+	}
+	
 	public List<ValorPorLoja> getValorTotalPorLoja() {
-		HashMap<Loja, Double> valorTotalPorLoja = new HashMap<Loja, Double>();
+		HashMap<Loja, ValorPorLoja> valorTotalPorLoja = new HashMap<Loja, ValorPorLoja>();
 		
 		for(Pedido pedido : this.pedidos) {
 			Double valorLoja = (pedido.getValorTotal() / pedido.getFormaDePagamento().getParcelas().size());
+			Double valorLojaComDesconto = pedido.getValorTotalComDesconto();
 			 if (valorTotalPorLoja.get(pedido.getLoja()) == null) {
-				 valorTotalPorLoja.put(pedido.getLoja(), valorLoja);
+				 ValorPorLoja valorPorLoja = new ValorPorLoja(pedido.getLoja().getNome(), valorLoja, valorLojaComDesconto);
+				 valorTotalPorLoja.put(pedido.getLoja(), valorPorLoja);
 			 } else {
-				 Double valorAcumulado = valorLoja + valorTotalPorLoja.get(pedido.getLoja());
-				 valorTotalPorLoja.put(pedido.getLoja(), valorAcumulado);
+				 ValorPorLoja valorPorLoja = valorTotalPorLoja.get(pedido.getLoja());
+				 Double valorAcumulado = valorLoja + valorPorLoja.getValor();
+				 Double valorComDesconto =  pedido.getValorTotalComDesconto();
+				 
+				 valorPorLoja.setValor(valorAcumulado);
+				 valorPorLoja.setValorComDesconto(valorComDesconto);
+				 
+				 valorTotalPorLoja.put(pedido.getLoja(), valorPorLoja);
 			 }
 		}
 		
 		List<ValorPorLoja> retorno = new ArrayList<ValorPorLoja>();
 		
 		for(Loja chave : valorTotalPorLoja.keySet()) {
-			retorno.add(new ValorPorLoja(chave.getNome(), valorTotalPorLoja.get(chave)));
+			retorno.add(valorTotalPorLoja.get(chave));
 			
 		}
 		
