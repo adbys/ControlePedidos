@@ -23,11 +23,14 @@ public class Mes implements Comparable {
 	private String ano;
 	@ManyToMany
 	private List<Pedido> pedidos;
+	@ManyToMany
+	private List<Pedido> pedidosRecebidos;
 	
 	public Mes(String mes, String ano) {
 		this.mes = mes;
 		this.ano = ano;
-		pedidos = new ArrayList<Pedido>();
+		this.pedidos = new ArrayList<Pedido>();
+		this.pedidosRecebidos = new ArrayList<Pedido>();
 	}
 	
 	public Mes() {
@@ -61,8 +64,28 @@ public class Mes implements Comparable {
 		return this.pedidos;
 	}
 	
+	public void setPedidosARecever(List<Pedido> pedidosAReceber) {
+		this.pedidosRecebidos = pedidosAReceber;
+	}
+	
+	public List<Pedido> getPedidosAReceber() {
+		return this.pedidosRecebidos;
+	}
+	
 	public int getQtdPedidos() {
-		return this.pedidos.size();
+		int qtd = 0;
+		
+		for (Pedido pedido : this.pedidosRecebidos) {
+			for(Produto produto : pedido.getProdutos()) {
+				qtd += produto.getQuantidade();
+			}
+		}
+		
+		return qtd;
+	}
+	
+	public void adicionarPedidoAReceber (Pedido pedido) {
+		this.pedidosRecebidos.add(pedido);
 	}
 	
 	public void adicionarPedido (Pedido pedido) {
@@ -126,7 +149,7 @@ public class Mes implements Comparable {
 		
 		HashMap<CategoriaProdutos, HashMap<GeneroProdutos, QuantidadePorCategoria>> qtdPorGeneroECategoria = new HashMap<CategoriaProdutos, HashMap<GeneroProdutos, QuantidadePorCategoria>>();
 		
-		for(Pedido pedido : this.pedidos) {
+		for(Pedido pedido : this.pedidosRecebidos) {
 			for (Produto produto : pedido.getProdutos()) {
 				if(qtdPorGeneroECategoria.get(produto.getCategoria()) == null) {
 					HashMap<GeneroProdutos, QuantidadePorCategoria> innerMap = new HashMap<GeneroProdutos, QuantidadePorCategoria>();

@@ -33,6 +33,7 @@ public class PedidoController {
 	@Autowired
 	MesFinanceiroService financeiroService;
 	
+	//TODO: REFATORAR
 	@RequestMapping(method = RequestMethod.POST)
 	public long salvePedido (@RequestBody Pedido pedido) {
 		
@@ -55,24 +56,45 @@ public class PedidoController {
 			e.printStackTrace();
 		}
 
+		Calendar c = Calendar.getInstance();
+		c.setTime(data);
+		
+		Locale ptBR = new Locale("pt", "BR");
+		Formatter fmt = new Formatter(ptBR);
+		fmt.format("%tB", c.getTime());
+		int anoInt = c.getTime().getYear() + 1900;
+		String ano = String.valueOf(anoInt);
+
+		Mes mes = financeiroService.buscarMesEAno(fmt.toString(), ano);
+
+		if (mes != null) {
+			mes.adicionarPedidoAReceber(pedido);
+			financeiroService.salvarMes(mes);
+		} else {
+			Mes mesParcela = new Mes(fmt.toString(), ano);
+			mesParcela.adicionarPedidoAReceber(pedido);
+			financeiroService.salvarMes(mesParcela);
+		}
+
+		
 		for (String dataParcela : parcelas) {
+
+			Calendar c1 = Calendar.getInstance();
+			c1.setTime(data);
+	
+			Formatter fmt1 = new Formatter(ptBR);
+			c1.add(Calendar.DATE, Integer.parseInt(dataParcela)); 
+			fmt1.format("%tB", c1.getTime());
+
 			
-			Calendar c = Calendar.getInstance();
-			c.setTime(data);
-			c.add(Calendar.DATE, Integer.parseInt(dataParcela)); 
 			
-			Locale ptBR = new Locale("pt", "BR");
-			Formatter fmt = new Formatter(ptBR);
-			fmt.format("%tB", c.getTime());
-			int anoInt = c.getTime().getYear() + 1900;
-			String ano = String.valueOf(anoInt);
-			Mes mes = financeiroService.buscarMesEAno(fmt.toString(), ano);
+			Mes mes1 = financeiroService.buscarMesEAno(fmt1.toString(), ano);
 			
-			if (mes != null) {
+			if (mes1 != null) {
 				mes.adicionarPedido(pedido);
 				financeiroService.salvarMes(mes);
 			} else {
-				Mes mesParcela = new Mes(fmt.toString(), ano);
+				Mes mesParcela = new Mes(fmt1.toString(), ano);
 				mesParcela.adicionarPedido(pedido);
 				financeiroService.salvarMes(mesParcela);
 			}
