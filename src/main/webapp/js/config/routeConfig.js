@@ -110,8 +110,8 @@ app.config(function ($stateProvider){
             }
         },
         resolve: {
-            meses: function(financeiroService) {
-                return financeiroService.carregarMeses();
+            meses: function(detalhesService) {
+                return detalhesService.carregarMeses();
             }
         }
     }).state("visualizaPedido", {
@@ -156,8 +156,8 @@ app.config(function ($stateProvider){
             }
         },
         resolve: {
-            mes: function(financeiroService, $stateParams) {
-                return financeiroService.getMes($stateParams.mesId);
+            mes: function(detalhesService, $stateParams) {
+                return detalhesService.getMes($stateParams.mesId);
             }
         }
     }).state("editarPedido", {
@@ -205,6 +205,26 @@ app.config(function ($stateProvider){
             }
         },
         resolve: {
+            meses: function(detalhesService) {
+                return detalhesService.carregarMeses();
+            }
+        }
+    }).state("inventatrioMes", {
+        url: "/inventario/:mesId",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/inventarioDetalhes.html",
+                controller: "inventarioDetalhesCtrl"
+                
+            }
+        },
+        resolve: {
+            mes: function(detalhesService, $stateParams) {
+                return detalhesService.getMes($stateParams.mesId);
+            }
         }
     });
 

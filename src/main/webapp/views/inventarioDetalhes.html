@@ -1,0 +1,26 @@
+<div class="container text-center">
+
+	<h1>Inventário</h1>
+	<br>
+	<h2>{{mes.mes}} - {{mes.ano}}</h2>
+	<br>
+	<br>			
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th class="text-center" style="width:40%;">Categoria</th>
+				<th class="text-center" style="width:30%;">Genero</th>
+				<th class="text-center" style="width:30%;">Quantidade</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr ng-repeat="obj in mes.quantidadeTotalPorCategoria">
+				<td>{{obj.categoria}}</td>
+				<td>{{obj.genero}}</td>
+				<td>{{obj.quantidade}}</td>
+			</tr>
+		</tbody>
+	</table>
+	<button class="btn btn-default" ng-click="voltar()">Voltar</button>
+	</div>
+</div>

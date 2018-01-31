@@ -1,10 +1,10 @@
-app.factory("financeiroService", function ($http) {
+app.factory("detalhesService", function ($http) {
 	var _carregarMeses = function () {
-		return $http.get("/financeiro");
+		return $http.get("/detalhes");
 	};
 
 	var _getMes = function (id) {
-		return $http.get("/financeiro/" + id);
+		return $http.get("/detalhes/" + id);
 	}
 
 

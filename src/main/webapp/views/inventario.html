@@ -14,12 +14,21 @@
 		</thead>
 		<tbody>
 			
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr dir-paginate="mes in meses | itemsPerPage:12">
+				<td> <a href="#!inventario/{{mes.id}}">{{mes.mes}}</a></td>
+				<td>{{mes.ano}}</td>
+				<td>{{mes.qtdPedidos}}</td>
 			</tr>
 		</tbody>
 	</table>
+	<div class="row">
+		<dir-pagination-controls
+       		max-size="5"
+       		direction-links="true"
+       		boundary-links="true"
+       		auto-hide="false"
+       		clear-button="false"
+       	>
+    	</dir-pagination-controls>
 	</div>
 </div>

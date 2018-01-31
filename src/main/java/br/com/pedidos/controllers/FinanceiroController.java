@@ -8,25 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.pedidos.model.MesFinanceiro;
+import br.com.pedidos.model.Mes;
 import br.com.pedidos.services.MesFinanceiroService;
 
 @RestController
-@RequestMapping(value="/financeiro")
+@RequestMapping(value="/detalhes")
 public class FinanceiroController {
 	
 	@Autowired
 	MesFinanceiroService financeiroService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<MesFinanceiro> getMeses () {
+	public List<Mes> getMeses () {
 		
 		return financeiroService.buscarTodas();
 		
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public MesFinanceiro getPedidosPorId (@PathVariable long id) {
+	public Mes getMesPorId (@PathVariable long id) {
 		return this.financeiroService.buscarPorId(id);
 	}
 

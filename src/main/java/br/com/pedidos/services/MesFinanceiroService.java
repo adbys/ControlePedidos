@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.pedidos.model.MesFinanceiro;
+import br.com.pedidos.model.Mes;
 import br.com.pedidos.model.Pedido;
 import br.com.pedidos.repository.MesFinanceiroRepository;
 
@@ -16,25 +16,25 @@ public class MesFinanceiroService {
 	@Autowired
 	MesFinanceiroRepository mesFinanceiroRepository;
 	
-	public MesFinanceiro salvarMes (MesFinanceiro mes) {
+	public Mes salvarMes (Mes mes) {
 		mesFinanceiroRepository.save(mes);
 		
 		return mes;
 	}
 	
-	public List<MesFinanceiro> buscarTodas () {
+	public List<Mes> buscarTodas () {
 		
-		List<MesFinanceiro> meses = mesFinanceiroRepository.findAll();
+		List<Mes> meses = mesFinanceiroRepository.findAll();
 		Collections.sort(meses);
 		
 		return meses;
 	}
 	
-	public MesFinanceiro buscarMesEAno (String mes, String ano) {
+	public Mes buscarMesEAno (String mes, String ano) {
 		return mesFinanceiroRepository.findByMesAndAno(mes, ano);
 	}
 
-	public MesFinanceiro buscarPorId(long id) {
+	public Mes buscarPorId(long id) {
 		return mesFinanceiroRepository.findById(id);
 	}
 	

@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class MesFinanceiro implements Comparable {
+public class Mes implements Comparable {
 	
 	@Id
 	@GeneratedValue
@@ -25,13 +24,13 @@ public class MesFinanceiro implements Comparable {
 	@ManyToMany
 	private List<Pedido> pedidos;
 	
-	public MesFinanceiro(String mes, String ano) {
+	public Mes(String mes, String ano) {
 		this.mes = mes;
 		this.ano = ano;
 		pedidos = new ArrayList<Pedido>();
 	}
 	
-	public MesFinanceiro() {
+	public Mes() {
 		
 	}
 	
@@ -60,6 +59,10 @@ public class MesFinanceiro implements Comparable {
 	
 	public List<Pedido> getPedidos() {
 		return this.pedidos;
+	}
+	
+	public int getQtdPedidos() {
+		return this.pedidos.size();
 	}
 	
 	public void adicionarPedido (Pedido pedido) {
@@ -119,9 +122,47 @@ public class MesFinanceiro implements Comparable {
 		return retorno;
 	}
 	
+	public List<QuantidadePorCategoria> getQuantidadeTotalPorCategoria() {
+		
+		HashMap<CategoriaProdutos, HashMap<GeneroProdutos, QuantidadePorCategoria>> qtdPorGeneroECategoria = new HashMap<CategoriaProdutos, HashMap<GeneroProdutos, QuantidadePorCategoria>>();
+		
+		for(Pedido pedido : this.pedidos) {
+			for (Produto produto : pedido.getProdutos()) {
+				if(qtdPorGeneroECategoria.get(produto.getCategoria()) == null) {
+					HashMap<GeneroProdutos, QuantidadePorCategoria> innerMap = new HashMap<GeneroProdutos, QuantidadePorCategoria>();
+					QuantidadePorCategoria qpc = new QuantidadePorCategoria(produto.getCategoria(), produto.getGenero(), produto.getQuantidade());
+					innerMap.put(produto.getGenero(), qpc);
+					qtdPorGeneroECategoria.put(produto.getCategoria(), innerMap);
+				} else if(qtdPorGeneroECategoria.get(produto.getCategoria()).get(produto.getGenero()) == null) {
+					HashMap<GeneroProdutos, QuantidadePorCategoria> innerMap = new HashMap<GeneroProdutos, QuantidadePorCategoria>();
+					QuantidadePorCategoria qpc = new QuantidadePorCategoria(produto.getCategoria(), produto.getGenero(), produto.getQuantidade());
+					innerMap.put(produto.getGenero(), qpc);
+					qtdPorGeneroECategoria.put(produto.getCategoria(), innerMap);
+				} else {
+					HashMap innerMap = qtdPorGeneroECategoria.get(produto.getCategoria());
+					QuantidadePorCategoria qpc = (QuantidadePorCategoria) innerMap.get(produto.getGenero());
+					qpc.setQuantidade(qpc.getQuantidade() + produto.getQuantidade());
+				}
+			}
+		}
+		
+		List<QuantidadePorCategoria> retorno = new ArrayList<QuantidadePorCategoria>();
+		
+		
+		for (CategoriaProdutos chave : qtdPorGeneroECategoria.keySet()) {
+			HashMap<GeneroProdutos, QuantidadePorCategoria> innerMap = qtdPorGeneroECategoria.get(chave);
+			for (GeneroProdutos innerChave : innerMap.keySet()) {
+				retorno.add(innerMap.get(innerChave));
+			}
+		}
+		
+		return retorno;
+	}
+	
+	
 	@Override
 	public int compareTo(Object o) {
-		MesFinanceiro outroMes = (MesFinanceiro) o;
+		Mes outroMes = (Mes) o;
 		
 		Locale ptBR = new Locale("pt", "BR");
 		

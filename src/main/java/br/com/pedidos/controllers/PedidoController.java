@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.pedidos.model.FormaDePagamento;
-import br.com.pedidos.model.MesFinanceiro;
+import br.com.pedidos.model.Mes;
 import br.com.pedidos.model.Pedido;
 import br.com.pedidos.services.MesFinanceiroService;
 import br.com.pedidos.services.PedidoService;
@@ -66,13 +66,13 @@ public class PedidoController {
 			fmt.format("%tB", c.getTime());
 			int anoInt = c.getTime().getYear() + 1900;
 			String ano = String.valueOf(anoInt);
-			MesFinanceiro mes = financeiroService.buscarMesEAno(fmt.toString(), ano);
+			Mes mes = financeiroService.buscarMesEAno(fmt.toString(), ano);
 			
 			if (mes != null) {
 				mes.adicionarPedido(pedido);
 				financeiroService.salvarMes(mes);
 			} else {
-				MesFinanceiro mesParcela = new MesFinanceiro(fmt.toString(), ano);
+				Mes mesParcela = new Mes(fmt.toString(), ano);
 				mesParcela.adicionarPedido(pedido);
 				financeiroService.salvarMes(mesParcela);
 			}
