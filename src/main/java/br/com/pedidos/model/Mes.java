@@ -157,14 +157,15 @@ public class Mes implements Comparable {
 					innerMap.put(produto.getGenero(), qpc);
 					qtdPorGeneroECategoria.put(produto.getCategoria(), innerMap);
 				} else if(qtdPorGeneroECategoria.get(produto.getCategoria()).get(produto.getGenero()) == null) {
-					HashMap<GeneroProdutos, QuantidadePorCategoria> innerMap = new HashMap<GeneroProdutos, QuantidadePorCategoria>();
+					HashMap<GeneroProdutos, QuantidadePorCategoria> innerMap = qtdPorGeneroECategoria.get(produto.getCategoria());
 					QuantidadePorCategoria qpc = new QuantidadePorCategoria(produto.getCategoria(), produto.getGenero(), produto.getQuantidade());
 					innerMap.put(produto.getGenero(), qpc);
 					qtdPorGeneroECategoria.put(produto.getCategoria(), innerMap);
 				} else {
 					HashMap innerMap = qtdPorGeneroECategoria.get(produto.getCategoria());
 					QuantidadePorCategoria qpc = (QuantidadePorCategoria) innerMap.get(produto.getGenero());
-					qpc.setQuantidade(qpc.getQuantidade() + produto.getQuantidade());
+					int qtd = qpc.getQuantidade();
+					qpc.setQuantidade(qtd + produto.getQuantidade());
 				}
 			}
 		}
