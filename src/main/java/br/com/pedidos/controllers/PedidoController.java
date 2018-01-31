@@ -78,23 +78,26 @@ public class PedidoController {
 
 		
 		for (String dataParcela : parcelas) {
+			
 
 			Calendar c1 = Calendar.getInstance();
 			c1.setTime(data);
 	
 			Formatter fmt1 = new Formatter(ptBR);
 			c1.add(Calendar.DATE, Integer.parseInt(dataParcela)); 
+			int anoInt1 = c1.getTime().getYear() + 1900;
+			String ano1 = String.valueOf(anoInt1);
 			fmt1.format("%tB", c1.getTime());
 
 			
 			
-			Mes mes1 = financeiroService.buscarMesEAno(fmt1.toString(), ano);
+			Mes mes1 = financeiroService.buscarMesEAno(fmt1.toString(), ano1);
 			
 			if (mes1 != null) {
 				mes.adicionarPedido(pedido);
 				financeiroService.salvarMes(mes);
 			} else {
-				Mes mesParcela = new Mes(fmt1.toString(), ano);
+				Mes mesParcela = new Mes(fmt1.toString(), ano1);
 				mesParcela.adicionarPedido(pedido);
 				financeiroService.salvarMes(mesParcela);
 			}
