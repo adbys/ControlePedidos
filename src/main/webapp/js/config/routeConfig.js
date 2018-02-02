@@ -59,6 +59,9 @@ app.config(function ($stateProvider){
             },
             generos: function(generoService) {
                 return generoService.carregarGeneros();
+            },
+            modeloProdutos: function(modeloProdutoService) {
+                return modeloProdutoService.getModelos();
             }
         }
     })
@@ -224,6 +227,26 @@ app.config(function ($stateProvider){
         resolve: {
             mes: function(detalhesService, $stateParams) {
                 return detalhesService.getMes($stateParams.mesId);
+            }
+        }
+    }).state("cadastroProduto", {
+        url: "/produto",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/cadastraProduto.html",
+                controller: "cadastraProdutoCtrl"
+                
+            }
+        },
+        resolve: {
+            categorias: function(categoriaService) {
+                return categoriaService.carregarCategorias();
+            },
+            generos: function(generoService) {
+                return generoService.carregarGeneros();
             }
         }
     });

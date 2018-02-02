@@ -1,24 +1,25 @@
-app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento, generos){
+app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento, generos, modeloProdutos){
 
 	$scope.lojas = lojas.data;
 	$scope.marcas = marcas.data;
 	$scope.categorias = categorias.data;
 	$scope.formasDePagamento = formasDePagamento.data;
 	$scope.generos = generos.data;
+	$scope.modeloProdutos = modeloProdutos.data;
 
 
-	$scope.produtos = [{
-		nome: '',
-	    quantidade: '',
-	    categoria: '',
-	    precoCusto: '',
-	    precoVenda: ''
-
-	}];
+	$scope.produtos = [{}];
 
 	$scope.salvarPedido = function (pedido) {
-		console.log(pedido);
-		pedidoService.cadastraPedido(pedido, $scope.produtos).then(function successCallback(response) {
+
+		pedido.produtos = [];
+
+		for (var index in $scope.produtos) {
+			pedido.produtos.push($scope.produtos[index][0]);
+		}
+		
+
+		pedidoService.cadastraPedido(pedido).then(function successCallback(response) {
 		    console.log(response.data);
 		    $location.path("/index");
 		    toastr.success("Pedido com identificador " + response.data + " adicionado com sucesso!");
@@ -28,20 +29,14 @@ app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoS
 		  });
 	}
 
-	$scope.apagaProduto = function (produto) {
-		var index = $scope.produtos.indexOf(produto);
+	$scope.apagaProduto = function (index) {
+		
 		$scope.produtos.splice(index, 1);
 
 	}
 
 	$scope.addNovoProduto = function() {
-	    $scope.produtos.push({
-	      nome: '',
-	      quantidade: '',
-	      categoria: '',
-	      precoCusto: '',
-	      precoVenda: ''
-	    });
+	    $scope.produtos.push({});
 	}
 	
 

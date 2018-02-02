@@ -1,16 +1,15 @@
 app.factory("pedidoService", function ($http) {
 
-	var _cadastraPedido = function (pedido, produtos) {
-		console.log(pedido);
+	var _cadastraPedido = function (pedido) {
 		var valorTotal = 0;
-
-		pedido.produtos = produtos
 
 		for (index in pedido.produtos) {
 		    valorTotal += pedido.produtos[index].quantidade * pedido.produtos[index].precoCusto 
 		}
 
 		pedido.valorTotal = valorTotal
+
+		console.log(pedido);
 
 		return $http.post("/pedidos", pedido);
 	};
