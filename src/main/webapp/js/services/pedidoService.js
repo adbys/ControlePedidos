@@ -9,7 +9,6 @@ app.factory("pedidoService", function ($http) {
 
 		pedido.valorTotal = valorTotal
 
-		console.log(pedido);
 
 		return $http.post("/pedidos", pedido);
 	};

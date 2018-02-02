@@ -7,6 +7,7 @@ app.controller("cadastraProdutoCtrl", function($scope, toastr, categorias, gener
 		
 		modeloProdutoService.salvarModelo(modelo).then(function successCallback(response) {
 		    console.log(response);
+		    $location.path("/index");
 		    toastr.success("Produto: " + response.data.nome + " cadastrado com id: " + response.data.id);
 		   }, function errorCallback(response) {
 		    // called asynchronously if an error occurs
