@@ -1,5 +1,6 @@
 package br.com.pedidos.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -10,6 +11,9 @@ import br.com.pedidos.interceptors.AuthInterceptor;
 @Configuration
 public class Config extends WebMvcConfigurerAdapter {
 	
+	@Autowired
+	AuthInterceptor authInterceptor;
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/*")
@@ -18,7 +22,7 @@ public class Config extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new AuthInterceptor());
+		registry.addInterceptor(authInterceptor);
 	}
 
 } 

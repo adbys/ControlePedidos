@@ -10,6 +10,10 @@ app.factory("authInterceptor", function ($state, authService) {
 			return config;
 		},
 		responseError: function(error) {
+			if (error.status == 400) {
+				authService.clearToken();
+				$state.go('login');
+			}
 			if (error.status == 403) {
 				$state.go('login');
 			}
