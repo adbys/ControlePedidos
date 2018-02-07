@@ -1,4 +1,4 @@
-app.config(function ($stateProvider){
+app.config(function ($stateProvider, $urlRouterProvider){
 	$stateProvider
     .state("login", {
         url: "/login",
@@ -227,5 +227,7 @@ app.config(function ($stateProvider){
             }
         }
     });
+
+     $urlRouterProvider.otherwise('/index');
 
 });
