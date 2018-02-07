@@ -27,8 +27,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
+		System.out.println(request.getRequestURL());
 		
-		if (request.getRequestURL().toString().contains("/auth/signin")) {
+		if (request.getRequestURL().toString().contains("/auth/signin") || request.getRequestURL().toString().contains("/usuario") || request.getRequestURL().toString().contains("/error")) {
 			return true;
 		} else {
 			String token = request.getHeader("authorization");

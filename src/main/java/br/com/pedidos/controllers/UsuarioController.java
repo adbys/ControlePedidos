@@ -1,5 +1,9 @@
 package br.com.pedidos.controllers;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,11 +22,23 @@ public class UsuarioController {
 	UsuarioService usuarioService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String salveUsuario (@RequestBody Usuario usuario) {
+	public String salveUsuario (@RequestBody Usuario usuario, HttpServletResponse response) {
 		
+		
+		Usuario usuarioFound = usuarioService.buscarUsuario(usuario.getLogin());
+		
+		if(usuarioFound != null) {
+			try {
+				response.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE);
+				return null;
+			} catch (IOException e) {
+	
+			}
+			
+		}
+
 		String senha = usuario.getSenha();
 		String senhaCriptografada = BCrypt.hashpw(senha, BCrypt.gensalt());
-		
 		usuario.setSenha(senhaCriptografada);
 		
 		usuarioService.salvarUsuario(usuario);
