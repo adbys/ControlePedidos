@@ -6,6 +6,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class ModeloProduto {
@@ -21,7 +23,19 @@ public class ModeloProduto {
 	private String cor;
 	private double precoCusto;
 	private double precoVenda;
+	@OneToOne
+	@JoinColumn(name = "marca_id")
+	private Marca marca;
+
 	
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
 
 	public String getCor() {
 		return cor;

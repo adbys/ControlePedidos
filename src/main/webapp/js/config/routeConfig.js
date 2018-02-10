@@ -26,9 +26,6 @@ app.config(function ($stateProvider){
             },
             lojas: function(lojaService) {
                 return lojaService.carregarLojas();
-            },
-            marcas: function(marcaService) {
-                return marcaService.carregarMarcas();
             }
         }
     })
@@ -47,9 +44,6 @@ app.config(function ($stateProvider){
         resolve: {
             lojas: function(lojaService) {
                 return lojaService.carregarLojas();
-            },
-            marcas: function(marcaService) {
-                return marcaService.carregarMarcas();
             },
             categorias: function(categoriaService) {
                 return categoriaService.carregarCategorias();
@@ -179,9 +173,6 @@ app.config(function ($stateProvider){
             lojas: function(lojaService) {
                 return lojaService.carregarLojas();
             },
-            marcas: function(marcaService) {
-                return marcaService.carregarMarcas();
-            },
             categorias: function(categoriaService) {
                 return categoriaService.carregarCategorias();
             },
@@ -247,6 +238,9 @@ app.config(function ($stateProvider){
             },
             generos: function(generoService) {
                 return generoService.carregarGeneros();
+            },
+            marcas: function(marcaService) {
+                return marcaService.carregarMarcas();
             }
         }
     });

@@ -8,4 +8,6 @@ import br.com.pedidos.model.ModeloProduto;
 @Repository
 public interface ModeloProdutoRepository extends JpaRepository<ModeloProduto, Long> {
 
+	ModeloProduto findById(long id);
+
 }

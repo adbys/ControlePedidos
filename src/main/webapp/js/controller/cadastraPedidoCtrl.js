@@ -1,23 +1,17 @@
-app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, lojas, marcas, categorias, formasDePagamento, generos, modeloProdutos){
+app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoService, modeloProdutoService, lojas, categorias, formasDePagamento, generos, modeloProdutos){
 
 	$scope.lojas = lojas.data;
-	$scope.marcas = marcas.data;
 	$scope.categorias = categorias.data;
 	$scope.formasDePagamento = formasDePagamento.data;
 	$scope.generos = generos.data;
 	$scope.modeloProdutos = modeloProdutos.data;
 
 
-	$scope.produtos = [{}];
+	$scope.produtos = [];
 
 	$scope.salvarPedido = function (pedido) {
 
-		pedido.produtos = [];
-
-		for (var index in $scope.produtos) {
-			pedido.produtos.push($scope.produtos[index][0]);
-		}
-		
+		pedido.produtos = $scope.produtos;
 
 		pedidoService.cadastraPedido(pedido).then(function successCallback(response) {
 		    console.log(response.data);
@@ -29,15 +23,29 @@ app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoS
 		  });
 	}
 
+	$scope.buscar = function (codigo) {
+		console.log(codigo);
+		modeloProdutoService.getModeloPorId(codigo).then(function successCallback(response) {
+		    console.log(response);
+		    for (var index = 0; index < $scope.produtos.length; index++) {
+		    	if($scope.produtos[index].id == response.data.id) {
+		    		toastr.error("Produto: " + response.data.nome + " já foi adicionado ao pedido!");
+		    		return;
+		    	}
+		    }
+		    $scope.produtos.push(response.data);
+		    toastr.success("Produto: " + response.data.nome + " adicionado ao pedido!");
+		   }, function errorCallback(response) {
+		    alert("Produto não encontrado");
+			});
+	}
+
 	$scope.apagaProduto = function (index) {
 		
 		$scope.produtos.splice(index, 1);
 
 	}
 
-	$scope.addNovoProduto = function() {
-	    $scope.produtos.push({});
-	}
 	
 
 });

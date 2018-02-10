@@ -2,6 +2,43 @@ header {
 	
 }
 
+.container {
+	width: 100%;
+	clear: both;
+}
+
+.containerLabel {
+	width: 30%
+	float: left;
+}
+
+.containerInput {
+	width: 70%;
+	clear: both;
+	float: right;
+
+}
+
+.containerSelect {
+	width: 70%;
+	clear: both;
+	float: right;
+}
+
+.containerTextarea {
+	width: 70%;
+	clear: both;
+	float: right;
+}
+
+.input-group {
+	width: 40%;
+}
+
+.centered-element {
+	float: none;
+    margin: 0 auto;
+}
 
 .margin-top-bottom {
 	margin-top: 5px;
@@ -68,7 +105,6 @@ label.field {
 
 fieldset div {
 	padding: 10px;
-	clear: both;
 }
 
 input.textbox-300 {

@@ -9,11 +9,16 @@ app.factory("modeloProdutoService", function ($http) {
 		return $http.get("/modeloProduto");
 	}
 
+	var _getModeloPorId = function (id) {
+		return $http.get("/modeloProduto/" + id);
+	}
+
 
 
 	return {
 		salvarModelo : _salvarModelo,
-		getModelos : _getModelos
+		getModelos : _getModelos,
+		getModeloPorId : _getModeloPorId
 	};
 
 }); 

@@ -24,4 +24,8 @@ public class ModeloProdutoService {
 		return this.modeloProdutoRepository.findAll();
 	}
 
+	public ModeloProduto getProdutoPorId(long id) {
+		return this.modeloProdutoRepository.findById(id);
+	}
+
 }

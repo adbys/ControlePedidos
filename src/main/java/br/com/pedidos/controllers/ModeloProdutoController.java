@@ -1,8 +1,12 @@
 package br.com.pedidos.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +30,22 @@ public class ModeloProdutoController {
 	@RequestMapping(method = RequestMethod.GET)
 	public List<ModeloProduto> getModelos() {
 		return this.modeloProdutoService.getTodosModelos();
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ModeloProduto getProdutosPorId (@PathVariable long id, HttpServletResponse response) {
+		ModeloProduto modelo = this.modeloProdutoService.getProdutoPorId(id);
+		if (modelo == null) {
+			try {
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return null;
+		} else {
+			response.setStatus(HttpServletResponse.SC_ACCEPTED);
+			return modelo;
+		}
 	}
 
 }
