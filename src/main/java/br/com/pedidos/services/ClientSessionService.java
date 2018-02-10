@@ -28,6 +28,7 @@ public class ClientSessionService {
 		ClientSession clientSession = this.clientSessionRepository.findByToken(token);
 		
 		clientSessionRepository.delete(clientSession);
+		clientSessionRepository.flush();
 	}
 	
 	public ClientSession buscarPorUsuario(Usuario usuario) {

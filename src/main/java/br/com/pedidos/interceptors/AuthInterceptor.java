@@ -1,16 +1,27 @@
 package br.com.pedidos.interceptors;
 
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.com.pedidos.model.ClientSession;
+import br.com.pedidos.services.AuthService;
+
+@Component
 public class AuthInterceptor implements HandlerInterceptor {
 	
 	static Logger logger = Logger.getLogger(AuthInterceptor.class);
+	
+	@Autowired
+	private AuthService authService;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -18,21 +29,23 @@ public class AuthInterceptor implements HandlerInterceptor {
 		
 		System.out.println(request.getRequestURL());
 		
-		if (request.getRequestURL().toString().contains("/auth/signin")) {
+		if (request.getRequestURL().toString().contains("/signin") || request.getRequestURL().toString().contains("/usuario") || request.getRequestURL().toString().contains("/error")) {
 			return true;
 		} else {
-			
-			System.out.println("header: " + request.getHeader("authorization"));
-			
-			if(request.getHeader("authorization") == null) {
-				System.out.println(">>>>>>>>>>>null");
+			String token = request.getHeader("authorization");
+			if(token == null) {
 				response.sendError(response.SC_FORBIDDEN);
 				return false;
-
 			} else {
+				int responseStatus = authService.checkToken(token);
 				
-				System.out.println(">>>>>>>>>>>>>>>>>> notnull");
-				return true;
+				if (responseStatus == HttpServletResponse.SC_ACCEPTED) {
+					return true;
+				} else {
+					response.sendError(responseStatus);
+					return false;
+				}
+
 			}
 
 		}
@@ -42,14 +55,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		// TODO Auto-generated method stub
+	
 
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		// TODO Auto-generated method stub
+		
 
 	}
 
