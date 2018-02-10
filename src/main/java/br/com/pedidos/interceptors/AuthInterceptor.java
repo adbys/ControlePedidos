@@ -18,8 +18,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 		
 		System.out.println(request.getRequestURL());
 		
-		if (request.getRequestURL().toString().contains("/auth/signin") || request.getRequestURL().toString().contains("/auth/checkToken")) {
-			System.out.println(">>>>>>>>>>>>>>>>>> signin");
+		if (request.getRequestURL().toString().contains("/auth/signin")) {
 			return true;
 		} else {
 			
