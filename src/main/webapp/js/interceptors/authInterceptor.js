@@ -1,26 +1,21 @@
-app.factory("authInterceptor", function ($state, authService) {
+app.factory("authInterceptor", function ($state, $q, authService) {
 	return {
 		request: function (config) {
 
-			if (config.url == '/auth/signin' || config.url == '/auth/checkToken') {
-				return config;
-			}
-
-			if(authService.getToken() != null) {
-				authService.isTokenValid().then(function(success) {
-					if (config.url == 'views/login.html') {
-						$state.go('index');
-					}
-					
-				}, function (error) {
-					authService.clearToken();
-					$state.go('login');
-				});
-			} else {
+			config.headers['authorization'] = authService.getToken(); 
+     
+			return config;
+		},
+		responseError: function(error) {
+			
+			if (error.status == 400) {
+				authService.clearToken();
 				$state.go('login');
 			}
-
-			return config;
-		}
+			if (error.status == 403) {
+				$state.go('login');
+			}
+			return $q.reject(error);
+        }
 	};
 });
