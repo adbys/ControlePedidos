@@ -9,6 +9,7 @@ app.controller("editarPedidoCtrl", function($scope, toastr, $location, pedidoSer
 	loadDatas();
 	loadFormaDePagamento();
 	loadLoja();
+	console.log($scope.pedido);
 
 
 
@@ -63,20 +64,18 @@ app.controller("editarPedidoCtrl", function($scope, toastr, $location, pedidoSer
 	}
 
 	$scope.buscar = function (codigo) {
-		console.log(codigo);
 		modeloProdutoService.getModeloPorId(codigo).then(function successCallback(response) {
-		    console.log(response);
-		    for (var index = 0; index < $scope.produtos.length; index++) {
-		    	if($scope.produtos[index].id == response.data.id) {
+		    for (var index = 0; index < $scope.pedido.produtos.length; index++) {
+		    	if($scope.pedido.produtos[index].nome === response.data.nome && $scope.pedido.produtos[index].marca.nome === response.data.marca.nome && $scope.pedido.produtos[index].categoria === response.data.categoria) {
 		    		toastr.error("Produto: " + response.data.nome + " já foi adicionado ao pedido!");
 		    		return;
 		    	}
 		    }
-		    $scope.produtos.push(response.data);
+		    $scope.pedido.produtos.push(response.data);
 		    toastr.success("Produto: " + response.data.nome + " adicionado ao pedido!");
 		   }, function errorCallback(response) {
 		    alert("Produto não encontrado");
-			});
+		   });
 	}
 
 	

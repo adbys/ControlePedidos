@@ -1,0 +1,82 @@
+<div class="container text-center">
+
+	<h1>Produtos</h1>
+	<br>
+	<br>
+
+	<p ng-show="produtos.length == 0">Não há produtos cadastrados.</p>
+	<div ng-show="produtos.length != 0">
+
+		<table datatable="ng" class="table table-hover">
+			<thead>
+				<tr> 
+					<th style="width:9%;">
+						<input class="form-control" ng-model="idSearch" type="text" name="" size="2">
+					</th>
+					<th style="width:11%;">
+						<input class="form-control" ng-model="nomeSearch"> </input>	
+					</th>
+					<th style="width:11%;">
+						<select class="form-control" ng-model="marcaSearch" ng-options="marca.nome as marca.nome for marca in marcas">
+						</select>
+					</th>
+					<th style="width:11%;">
+						<select class="form-control" ng-model="generoSearch" ng-options="genero as genero for genero in generos">
+						</select>
+					</th>
+					<th style="width:11%;">
+						<select class="form-control" ng-model="categoriaSearch" ng-options="categoria as categoria for categoria in categorias">
+						</select>
+					</th>
+					<th style="width:11%;">
+						<input class="form-control" ng-model="corSearch"> </input>
+					</th>
+				</tr>	
+			</thead>
+			<tr>
+				<th class="text-center" ng-click="sort('id')"> Id
+					<span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('nome')"> Nome
+					<span class="glyphicon sort-icon" ng-show="sortKey=='nome'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('marca')"> Marca
+					<span class="glyphicon sort-icon" ng-show="sortKey=='marca'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('genero')"> Gênero
+					<span class="glyphicon sort-icon" ng-show="sortKey=='genero'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('categoria')"> Categoria
+					<span class="glyphicon sort-icon" ng-show="sortKey=='categoria'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('cor')"> Cor 
+					<span class="glyphicon sort-icon" ng-show="sortKey=='cor'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+			</tr>
+				
+			
+			<tbody>
+				<tr dir-paginate="produto in produtos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | filter: {id: idSearch, nome: nomeSearch, cor: corSearch, genero : generoSearch, categoria : categoriaSearch} | itemsPerPage:20">
+					<td>{{produto.id}}</td>
+					<td>{{produto.nome}}</td>
+					<td>{{produto.marca.nome}}</td>
+					<td>{{produto.genero}}</td>
+					<td>{{produto.categoria}}</td>
+					<td>{{produto.cor}}</td>
+				</tr>
+				
+			</tbody>
+		</table>
+		<div class="row">
+			
+				<dir-pagination-controls
+		       		max-size="5"
+		       		direction-links="true"
+		       		boundary-links="true"
+		       		auto-hide="false"
+		       		clear-filters="limparFiltros()"
+		       	>
+		    	</dir-pagination-controls>
+		</div>
+	</div>
+</div>

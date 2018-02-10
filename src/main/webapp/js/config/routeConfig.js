@@ -243,6 +243,31 @@ app.config(function ($stateProvider, $urlRouterProvider){
                 return marcaService.carregarMarcas();
             }
         }
+    }).state("consultaProdutos", {
+        url: "/produtos",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/visualizaProdutos.html",
+                controller: "visualizaProdutosCtrl"
+                
+            }
+        },
+        resolve: {
+            produtos: function(modeloProdutoService) {
+                return modeloProdutoService.getModelos();
+            },categorias: function(categoriaService) {
+                return categoriaService.carregarCategorias();
+            },
+            generos: function(generoService) {
+                return generoService.carregarGeneros();
+            },
+            marcas: function(marcaService) {
+                return marcaService.carregarMarcas();
+            }
+        }
     });
 
      $urlRouterProvider.otherwise('/index');
