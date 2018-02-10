@@ -31,6 +31,12 @@
 					<th style="width:11%;">
 						<input class="form-control" ng-model="corSearch"> </input>
 					</th>
+					<th style="width:11%;">
+						<input class="form-control" ng-model="precoVendaSearch"> </input>
+					</th>
+					<th style="width:11%;">
+						<input class="form-control" ng-model="precoCustoSearch"> </input>
+					</th>
 				</tr>	
 			</thead>
 			<tr>
@@ -52,17 +58,25 @@
 				<th class="text-center" ng-click="sort('cor')"> Cor 
 					<span class="glyphicon sort-icon" ng-show="sortKey=='cor'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
 				</th>
+				<th class="text-center" ng-click="sort('precoCusto')"> Cor 
+					<span class="glyphicon sort-icon" ng-show="sortKey=='precoCusto'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
+				<th class="text-center" ng-click="sort('precoVenda')"> Cor 
+					<span class="glyphicon sort-icon" ng-show="sortKey=='precoVenda'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+				</th>
 			</tr>
 				
 			
 			<tbody>
-				<tr dir-paginate="produto in produtos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | filter: {id: idSearch, nome: nomeSearch, cor: corSearch, genero : generoSearch, categoria : categoriaSearch} | itemsPerPage:20">
+				<tr dir-paginate="produto in produtos | orderBy:sortKey:reverse | marcaFilter: marcaSearch | filter: {id: idSearch, nome: nomeSearch, cor: corSearch, genero : generoSearch, categoria : categoriaSearch, precoVenda : precoVendaSearch, precoCusto : precoCustoSearch} | itemsPerPage:20">
 					<td>{{produto.id}}</td>
 					<td>{{produto.nome}}</td>
 					<td>{{produto.marca.nome}}</td>
 					<td>{{produto.genero}}</td>
 					<td>{{produto.categoria}}</td>
 					<td>{{produto.cor}}</td>
+					<td>{{produto.precoCusto | currency}}</td>
+					<td>{{produto.precoVenda | currency}}</td>
 				</tr>
 				
 			</tbody>
