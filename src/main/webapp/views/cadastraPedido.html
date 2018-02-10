@@ -3,8 +3,10 @@
   $( function() {
     $( "#dataPedido" ).datepicker();
     $( "#dataPedido" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+    $( "#dataPedido" ).datepicker( $.datepicker.regional[ "pt-BR" ] );
     $( "#dataRecebimento" ).datepicker();
     $( "#dataRecebimento" ).datepicker( "option", "dateFormat", "dd/mm/yy" );
+    $( "#dataRecebimento" ).datepicker( $.datepicker.regional[ "pt-BR" ] );
   } );
   </script>
 
