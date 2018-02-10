@@ -7,7 +7,7 @@
 		<fieldset>
 			<div class="form-group">
 				<label>Forma de Pagamento</label>
-				<tags-input min-length="1" ng-model="tags" placeholder="Adicione o tempo das parcelas">
+				<tags-input add-on-space="true" add-on-comma="true" allowed-tags-pattern="^[1-9]\d*(\.\d+)?$" min-length="1" ng-model="tags" placeholder="Adicione o tempo das parcelas">
         		</tags-input>
 			</div>
 			<button class="btn btn-primary">Salvar</button>
