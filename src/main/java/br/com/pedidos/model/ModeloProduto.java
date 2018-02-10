@@ -18,7 +18,34 @@ public class ModeloProduto {
 	private CategoriaProdutos categoria;
 	@Enumerated(EnumType.STRING)
 	private GeneroProdutos genero;
+	private String cor;
+	private double precoCusto;
+	private double precoVenda;
 	
+
+	public String getCor() {
+		return cor;
+	}
+
+	public void setCor(String cor) {
+		this.cor = cor;
+	}
+
+	public double getPrecoCusto() {
+		return precoCusto;
+	}
+
+	public void setPrecoCusto(double precoCusto) {
+		this.precoCusto = precoCusto;
+	}
+
+	public double getPrecoVenda() {
+		return precoVenda;
+	}
+
+	public void setPrecoVenda(double precoVenda) {
+		this.precoVenda = precoVenda;
+	}
 
 	public Long getId() {
 		return id;

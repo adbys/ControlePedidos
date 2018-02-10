@@ -1,4 +1,4 @@
-app.controller("cadastraProdutoCtrl", function($scope, toastr, categorias, generos, modeloProdutoService) {
+app.controller("cadastraProdutoCtrl", function($scope, $location, toastr, categorias, generos, modeloProdutoService) {
 
 	$scope.categorias = categorias.data;
 	$scope.generos = generos.data;
