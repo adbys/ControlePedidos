@@ -34,9 +34,6 @@ public class Pedido {
 	@OneToOne
 	@JoinColumn(name = "loja_id")
 	private Loja loja;
-	@OneToOne
-	@JoinColumn(name = "marca_id")
-	private Marca marca;
 	@Enumerated(EnumType.STRING)
 	private EstadoPedido estado;
 
@@ -52,19 +49,11 @@ public class Pedido {
 	public Loja getLoja() {
 		return this.loja;
 	}
-	
-	public Marca getMarca() {
-		return this.marca;
-	}
+
 	
 	public void setLoja(Loja loja) {
 		this.loja = loja;
-	}
-
-	public void setMarca(Marca marca) {
-		this.marca = marca;
-	}
-	
+	}	
 
 	public Pedido() {
 		this.produtos = new ArrayList<Produto>();

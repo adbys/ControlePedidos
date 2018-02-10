@@ -26,9 +26,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
             },
             lojas: function(lojaService) {
                 return lojaService.carregarLojas();
-            },
-            marcas: function(marcaService) {
-                return marcaService.carregarMarcas();
             }
         }
     })
@@ -48,9 +45,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
             lojas: function(lojaService) {
                 return lojaService.carregarLojas();
             },
-            marcas: function(marcaService) {
-                return marcaService.carregarMarcas();
-            },
             categorias: function(categoriaService) {
                 return categoriaService.carregarCategorias();
             },
@@ -59,6 +53,9 @@ app.config(function ($stateProvider, $urlRouterProvider){
             },
             generos: function(generoService) {
                 return generoService.carregarGeneros();
+            },
+            modeloProdutos: function(modeloProdutoService) {
+                return modeloProdutoService.getModelos();
             }
         }
     })
@@ -176,9 +173,6 @@ app.config(function ($stateProvider, $urlRouterProvider){
             lojas: function(lojaService) {
                 return lojaService.carregarLojas();
             },
-            marcas: function(marcaService) {
-                return marcaService.carregarMarcas();
-            },
             categorias: function(categoriaService) {
                 return categoriaService.carregarCategorias();
             },
@@ -224,6 +218,29 @@ app.config(function ($stateProvider, $urlRouterProvider){
         resolve: {
             mes: function(detalhesService, $stateParams) {
                 return detalhesService.getMes($stateParams.mesId);
+            }
+        }
+    }).state("cadastroProduto", {
+        url: "/produto",
+        views: {
+            'header': {
+                templateUrl: "views/navbar.html"
+            },
+            'body': {
+                templateUrl : "views/cadastraProduto.html",
+                controller: "cadastraProdutoCtrl"
+                
+            }
+        },
+        resolve: {
+            categorias: function(categoriaService) {
+                return categoriaService.carregarCategorias();
+            },
+            generos: function(generoService) {
+                return generoService.carregarGeneros();
+            },
+            marcas: function(marcaService) {
+                return marcaService.carregarMarcas();
             }
         }
     });

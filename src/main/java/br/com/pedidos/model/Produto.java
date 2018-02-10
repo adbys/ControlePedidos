@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 
@@ -22,9 +23,21 @@ public class Produto {
 	private String tamanho;
 	@Enumerated(EnumType.STRING)
 	private GeneroProdutos genero;
+	@OneToOne
+	@JoinColumn(name = "marca_id")
+	private Marca marca;
+
 	
 	
 	
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
 	public String getCor() {
 		return cor;
 	}

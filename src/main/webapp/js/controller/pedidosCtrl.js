@@ -1,8 +1,7 @@
-app.controller("pedidosCtrl", function($scope, pedidos, lojas, marcas) {
+app.controller("pedidosCtrl", function($scope, pedidos, lojas) {
 
 	$scope.pedidos = pedidos.data;
 	$scope.lojas = lojas.data;
-	$scope.marcas = marcas.data;
 
 	$scope.limparFiltros = function() {
 		
@@ -10,7 +9,6 @@ app.controller("pedidosCtrl", function($scope, pedidos, lojas, marcas) {
 		$scope.dateEnd = undefined;
 		$scope.idSearch = undefined;
 		$scope.lojaSearch = undefined;
-		$scope.marcaSearch = undefined;
 		$scope.valorTotalSearch = undefined;
 		$scope.obsSearch = undefined;
 		$scope.estadoSearch = undefined;

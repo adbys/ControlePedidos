@@ -14,27 +14,23 @@
 					<th style="width:9%;">
 						<input class="form-control" ng-model="idSearch" type="text" name="" placeholder="Id" size="2">
 					</th>
-					<th style="width:10%;">
+					<th style="width:11%;">
 						<input class="form-control" type="date" ng-model="dateFrom"> </input>	
 					</th>
-					<th style="width:10%;">
+					<th style="width:11%;">
 						<input class="form-control" class="form-control" type="date" ng-model="dateEnd"> </input>
 					</th>
-					<th style="width:10%;">
+					<th style="width:11%;">
 					 	<select class="form-control" ng-model="lojaSearch" ng-options="loja.nome as loja.nome for loja in lojas" name="lojaSelect">
 						</select>
 					</th>
-					<th style="width:8%;">
-						<select class="form-control" ng-model="marcaSearch" ng-options="marca.nome as marca.nome for marca in marcas" name="marcaSelect" id="marcaSelect">
-						</select>  
-					</th>
-					<th style="width:8%;">
+					<th style="width:9%;">
 					 	<input class="form-control" ng-model="valorTotalSearch" type="text" name="" placeholder="Valor Total" size="10">
 					</th>
-					<th style="width:33%;">
+					<th style="width:36%;">
 						<input class="form-control" ng-model="obsSearch" type="text" name="" placeholder="Observações" size="12">
 					</th>
-					<th style="width:8%;">
+					<th style="width:9%;">
 						<select ng-model="estadoSearch" class="form-control">
 							<option value="NAO_RECEBIDO">Em Espera</option>
 							<option value="RECEBIDO">Recebido</option>
@@ -57,9 +53,6 @@
 				<th class="text-center" ng-click="sort('loja')"> Loja
 					<span class="glyphicon sort-icon" ng-show="sortKey=='loja'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
 				</th>
-				<th class="text-center" ng-click="sort('marca')"> Marca
-					<span class="glyphicon sort-icon" ng-show="sortKey=='marca'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-				</th>
 				<th class="text-center" ng-click="sort('valorTotal')"> Valor Total
 					<span class="glyphicon sort-icon" ng-show="sortKey=='valorTotal'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
 				</th>
@@ -79,7 +72,6 @@
 					<td>{{pedido.dataPedido | date : 'dd/MM/yyyy'}}</td>
 					<td>{{pedido.dataRecebimento | date : 'dd/MM/yyyy'}}</td>
 					<td>{{pedido.loja.nome}}</td>
-					<td>{{pedido.marca.nome}}</td>
 					<td>{{pedido.valorTotalComDesconto | currency}}</td>
 					<td>{{pedido.observacoes}}</td>
 					<td>

@@ -47,7 +47,7 @@ public class PedidoController {
 		FormaDePagamento formaPagamento = pedido.getFormaDePagamento();
 		List<String> parcelas = formaPagamento.getParcelas();
 		TimeZone tz = TimeZone.getTimeZone("America/Fortaleza");
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		df.setTimeZone(tz);
 		Date data = null;
 		try {
