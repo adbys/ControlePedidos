@@ -51,7 +51,7 @@ public class PedidoController {
 		df.setTimeZone(tz);
 		Date data = null;
 		try {
-			data = df.parse(pedido.getDataRecebimento());
+			data = df.parse(pedido.getDataPedido());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
