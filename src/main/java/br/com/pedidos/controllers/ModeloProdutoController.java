@@ -37,7 +37,7 @@ public class ModeloProdutoController {
 		ModeloProduto modelo = this.modeloProdutoService.getProdutoPorId(id);
 		if (modelo == null) {
 			try {
-				response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+				response.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

@@ -36,7 +36,8 @@ app.controller("cadastraPedidoCtrl", function($scope, toastr, $location, pedidoS
 		    $scope.produtos.push(response.data);
 		    toastr.success("Produto: " + response.data.nome + " adicionado ao pedido!");
 		   }, function errorCallback(response) {
-		    alert("Produto não encontrado");
+		   		toastr.error("Não foi possível cadastrar produto!");
+
 			});
 	}
 
