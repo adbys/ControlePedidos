@@ -95,7 +95,7 @@ public class PedidoController {
 			
 			if (mes1 != null) {
 				mes1.adicionarPedido(pedido);
-				financeiroService.salvarMes(mes);
+				financeiroService.salvarMes(mes1);
 			} else {
 				Mes mesParcela = new Mes(fmt1.toString(), ano1);
 				mesParcela.adicionarPedido(pedido);
